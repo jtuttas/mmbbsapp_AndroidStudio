@@ -1,7 +1,0 @@
-C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\classes\debug
-C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-756db7215d7d17bf822e7ef334391fb4a8cf14ff.jar
-C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\achartengine-1.1.0-f364884c2f7adcff68cfd19d23cf13ff38c741e5.jar
-C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-e4e4da8d27f47cd1b2e38733b9a132140c94454c.jar
-C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\socketio-024a3618298f29e02e704148e7fcf568787e50b6.jar
-C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\classes-5129536624feb325d9dfcd660481f230b8172ded.jar
-C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\classes-c7e2c292ab7871c9a45c6b4da46ef42c7e7c3770.jar

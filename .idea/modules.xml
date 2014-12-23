@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/achartengine-1.1.0/achartengine-1.1.0.iml" filepath="$PROJECT_DIR$/achartengine-1.1.0/achartengine-1.1.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmbbsapp.iml" filepath="$PROJECT_DIR$/mmbbsapp.iml" />
     </modules>

@@ -9,7 +9,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/achartengine-1.1.0" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
