@@ -535,19 +535,7 @@ public class Stundenplan extends Activity   {
     		//}
     		
                		
-            /*
-    		final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-    		alertDialog.setTitle("Werbung");
-    		alertDialog.setMessage("Unterstützen Sie die IT-Fete uund klicken Sie auf die Werbung!");
-    		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-    		public void onClick(DialogInterface dialog, int which) {
-    			alertDialog.cancel();
-    			finish();
-    		}
-    		});
-    		alertDialog.setIcon(R.drawable.uncletuttas);
-    		alertDialog.show();
-            */   
+
     		return true;
     	}
     	return super.onKeyDown(keyCode, event);
