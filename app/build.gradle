@@ -1,0 +1,25 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 'Google Inc.:Google APIs:18'
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "de.mmbbs"
+        minSdkVersion 16
+        targetSdkVersion 17
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.google.android.gms:play-services:+'
+    compile files('C:/Users/jtutt_000/AndroidStudioProjects/mmbbsapp/libs/achartengine-1.1.0.jar')
+    compile files('C:/Users/jtutt_000/AndroidStudioProjects/mmbbsapp/libs/socketio.jar')
+}

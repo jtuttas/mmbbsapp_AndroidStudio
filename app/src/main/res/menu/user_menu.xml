@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+	    <group
+        android:checkableBehavior="single"
+        >
+    <item android:id="@+id/item_friends_only" android:checked="false" android:title="@string/friends_only" android:checkable="true" android:icon="@drawable/add_friend"></item>
+    </group>
+
+</menu>

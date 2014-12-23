@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+     <PreferenceCategory android:title="Anwendungseinstellungen">
+    	<EditTextPreference android:key="klasse" android:dialogMessage="Klassenbezeichnung (z.B. FISI11A)" android:dialogTitle="@string/et_klasse" android:title="Klassenbezeichnung"></EditTextPreference>
+    	<EditTextPreference 
+    	android:inputType="textEmailAddress"
+    	    	android:dialogTitle="Email" android:key="email" android:dialogMessage="eduplaza EMail Adresse (z.B. Fisi11A.Mustermann@mmbbs.eduplaza.de)" android:defaultValue="mmbbs.eduplaza.de" android:title="EMail Adresse"></EditTextPreference>
+    	<CheckBoxPreference android:key="PushMessage" android:summaryOn="you receive Push Messages" android:summaryOff="you receive no messages" android:title="PushMessage [BETA]" android:selectable="true"  android:defaultValue="true"/>
+    </PreferenceCategory>
+</PreferenceScreen>
+

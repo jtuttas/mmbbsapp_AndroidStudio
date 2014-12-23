@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="de.mmbbs"
+      android:versionCode="17"
+      android:versionName="1.17" android:installLocation="auto">
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="17"/>
+ <!-- Daniel Lengies: Einbinden der Permissions (notwendige Berechigungen) für GPS und Internet zum Laden der Maps-Daten -->    
+        <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission> -->
+        <!-- <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission> -->
+        <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+        <uses-permission android:name="android.permission.uri"></uses-permission>
+		<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"> </uses-permission>
+    	<uses-permission android:name="android.permission.GET_ACCOUNTS" ></uses-permission>
+    	<uses-permission android:name="android.permission.WAKE_LOCK" ></uses-permission>
+    	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" ></uses-permission>
+
+    	<permission android:name="com.example.gcm.permission.C2D_MESSAGE"
+        	android:protectionLevel="signature" />
+    	<uses-permission android:name="com.example.gcm.permission.C2D_MESSAGE" />
+		    
+    
+        
+    <application android:icon="@drawable/icon" android:label="@string/app_name"
+        android:name="de.mmbbs.gameserver.GameServerApplication"
+        >
+        <receiver
+            android:name=".GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.example.gcm" />
+            </intent-filter>
+        </receiver>
+       
+        
+        <meta-data android:name="com.google.android.gms.version"
+           android:value="@integer/google_play_services_version" />
+        <activity android:name=".TabActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+                <!--  <action android:name="com.google.android.c2dm.intent.RECEIVE" />  -->
+                <!-- <category android:name="com.example.gcm" /> -->
+        </activity>
+        <activity android:name="Kontakt" android:label="@string/app_name">
+ 			<!-- Daniel Lengies: Einbinden der Maps-Bibliothek in die App -->
+            <!-- <uses-library android:name="com.google.android.maps" />  -->
+        </activity>
+        <activity android:name="MeineKlasse"></activity>
+        <activity android:name="EmailKlassenlehrer"></activity>
+        <activity android:name="Pref"></activity>
+        <activity android:name="Organisation"></activity>
+        <activity android:name="SearchTeacher"></activity>
+        <activity android:name="Stundenplan"></activity>
+        <activity android:name="UmsatzActivity"></activity>
+        <activity android:name="Vertretungsplan"></activity>
+        <receiver android:process=":remote" android:name="MyAppReciever"></receiver>
+<!-- Daniel Lengies: Initialisieren der Activity "Navigation" -->
+        <activity android:name="Pause"></activity>
+         <activity android:name="Spiele"></activity>
+         <activity
+            android:name="de.mmbbs.tictactoetournament.Main"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait"
+             >
+        </activity>
+        <activity
+            android:name="de.mmbbs.tictactoetournament.ChatActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+             >
+        </activity>
+        <activity
+            android:name="de.mmbbs.tictactoetournament.UserListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
+             >
+        </activity>
+        <activity
+            android:name="de.mmbbs.tictactoetournament.FragmentActivity"
+            
+            
+            android:label="@string/app_name"
+           
+            android:screenOrientation="portrait"
+             >
+        </activity>
+        <activity
+            android:name="de.mmbbs.tictactoetournament.HighscoreActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+             >
+        </activity>
+        <activity
+            android:name="de.mmbbs.tictactoetournament.TabActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Myactionbar"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
+             >
+   
+            
+        </activity>
+        <activity
+            android:name="de.mmbbs.tictactoetournament.game.Game"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Myactionbar"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
+             >
+        </activity>
+         
+		<activity android:name="com.google.android.gms.ads.AdActivity"
+             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+		
+
+    </application>
+</manifest>

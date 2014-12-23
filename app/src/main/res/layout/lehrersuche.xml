@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" 
+  android:background="@drawable/gradient_bg_header"
+  android:orientation="vertical">
+  
+    <Spinner
+		android:id="@+id/spinnerLehrer" 
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content"
+		android:background="@drawable/button_shape"
+		>
+		
+    </Spinner>
+    
+    <TextView 
+        android:text="@string/tv_textview" 
+		android:gravity="center_vertical|center_horizontal"
+		android:id="@+id/textViewTeacher" 
+		android:layout_height="wrap_content" 
+		android:layout_width="match_parent"
+		android:textColor="#ffffff"
+		android:background="#5778AD" 
+		android:padding="8dip" 
+		android:textStyle="bold">
+    </TextView>
+    
+    <ImageView 
+		android:src="@drawable/anonym" 
+		android:id="@+id/imageViewTeacher" 
+		android:layout_height="match_parent" 
+		android:layout_width="match_parent" 
+		android:layout_weight="1">
+    </ImageView>
+    
+</LinearLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  	xmlns:android="http://schemas.android.com/apk/res/android"
+ 	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/gradient_bg_header" 
+	android:orientation="vertical">
+	
+	 <ImageView android:id="@+id/imageView1" 
+    android:src="@drawable/mmbbshead" 
+    android:layout_width="match_parent" 
+    android:layout_height="75dip"
+     
+    />
+    
+    <Button
+        android:id="@+id/buttonAnruf"
+        style="@style/buttonstyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="buttonClick"
+        android:text="@string/bt_Anruf"
+                  android:textSize="24sp"
+        
+         >
+
+    </Button>
+    
+    <Button style="@style/buttonstyle"  
+		android:id="@+id/buttonEmail" 
+		android:layout_height="wrap_content" 
+		android:layout_width="match_parent" 
+		android:text="@string/bt_email_schule"
+		android:onClick="buttonClick"
+		          android:textSize="24sp"
+		
+		>
+    </Button>
+    
+    <Button style="@style/buttonstyle"  
+		android:id="@+id/buttonNavigation" 
+		android:layout_height="wrap_content" 
+		android:layout_width="match_parent" 
+		android:text="@string/bt_Navigation"
+		android:onClick="buttonClick"
+		          android:textSize="24sp"
+		
+		>
+    </Button>
+    
+    <Button style="@style/buttonstyle" 
+		android:text="@string/organisation" 
+		android:id="@+id/buttonorganisation" 
+		android:onClick="buttonClick"
+		          android:textSize="24sp"
+		
+		>
+    </Button>
+    
+    <Button style="@style/buttonstyle" 
+		android:text="@string/lehrersuche" 
+		android:id="@+id/buttonlehrersuche" 
+		android:onClick="buttonClick"
+		          android:textSize="24sp"
+		
+		>
+    </Button>
+    
+</LinearLayout>

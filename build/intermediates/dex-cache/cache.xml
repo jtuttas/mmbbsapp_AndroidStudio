@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\classes-c7e2c292ab7871c9a45c6b4da46ef42c7e7c3770.jar" />
+    </item>
+    <item
+        jar="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\libs\socketio.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="69cd2957510073b3655238671f49f061fc1b360b">
+        <dex dex="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\socketio-024a3618298f29e02e704148e7fcf568787e50b6.jar" />
+    </item>
+    <item
+        jar="C:\Users\jtutt_000\Google Drive\android-sdk-windows\extras\android\m2repository\com\android\support\support-annotations\21.0.0\support-annotations-21.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
+        <dex dex="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-756db7215d7d17bf822e7ef334391fb4a8cf14ff.jar" />
+    </item>
+    <item
+        jar="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\libs\achartengine-1.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
+        <dex dex="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\achartengine-1.1.0-f364884c2f7adcff68cfd19d23cf13ff38c741e5.jar" />
+    </item>
+    <item
+        jar="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\classes-5129536624feb325d9dfcd660481f230b8172ded.jar" />
+    </item>
+    <item
+        jar="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
+        <dex dex="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-e4e4da8d27f47cd1b2e38733b9a132140c94454c.jar" />
+    </item>
+
+</items>

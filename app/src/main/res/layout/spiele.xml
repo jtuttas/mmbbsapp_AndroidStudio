@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  
+  
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" 
+		 android:background="@drawable/gradient_bg_header"
+		android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res-auto">
+	 <ImageView android:id="@+id/imageView1" 
+    android:src="@drawable/mmbbshead" 
+    android:layout_width="match_parent" 
+    android:layout_height="75dip"
+    />
+
+      <Button
+          android:id="@+id/button_ttt"
+          style="@style/buttonstyle"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/imageView1"
+          android:onClick="klick_ttt"
+          android:text="TicTacToe@mmbbs"
+                    android:textSize="24sp"
+          
+           />
+
+</RelativeLayout>

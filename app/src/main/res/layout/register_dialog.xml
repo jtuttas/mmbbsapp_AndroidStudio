@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/curved_shape"
+    android:orientation="vertical" 
+        android:id="@+id/layout_dialog_main"
+    
+    >
+
+	 <TableLayout
+	     android:layout_width="fill_parent"
+	     android:layout_height="wrap_content"
+	>
+
+		<TableRow
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content" >
+
+		    <Button
+		        android:id="@+id/button_previous"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_weight="1"
+		        android:background="@drawable/left_login_button_drawable"
+		        android:onClick="onClick"
+		        android:padding="10dp"
+		        android:singleLine="true"
+		        android:text="@string/resend_login"
+		        android:textAlignment="center"
+		        android:textColor="#ffffff"
+		        android:textSize="24sp" />
+
+		    <Button
+		        android:id="@+id/button_next"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="fill"
+		        android:layout_weight="1"
+		        android:background="@drawable/right_login_button_drawable"
+		        android:padding="10dp"
+		        android:singleLine="true"
+		        android:text="@string/login"
+		        android:textAlignment="center"
+		        android:textColor="#ffffff"
+		        android:textSize="24sp" />
+
+		</TableRow>
+
+	</TableLayout>
+	<TableLayout 
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	    
+	    >
+		<TableRow 
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:layout_marginTop="10dp"
+		    >
+
+	     <TextView
+	         android:id="@+id/textView1"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:layout_marginLeft="15dp"
+	         android:text="@string/username"
+	         android:textAppearance="?android:attr/textAppearanceMedium"
+	         android:textSize="24sp" />
+
+	     <EditText
+	         android:id="@+id/editText_login"
+	         android:layout_width="200dp"
+	         android:layout_height="wrap_content"
+	 		 android:textSize="24sp"
+	 		 android:layout_marginLeft="15dp"
+	 		 android:layout_marginRight="10dp"
+	         android:hint="@string/username" />
+
+		</TableRow>
+		<TableRow 
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	         android:layout_marginTop="10dp"
+		    >
+	     <TextView
+	         android:id="@+id/textView_score"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="@string/Password"
+	 		 android:textSize="24sp"
+	         android:layout_marginLeft="15dp"
+	         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	     <EditText
+	         android:id="@+id/editText_password"
+	         android:layout_width="200dp"
+	         android:layout_height="wrap_content"
+	 		 android:textSize="24sp"
+	 		 android:layout_marginLeft="15dp"
+	 		 android:layout_marginRight="10dp"
+	         android:hint="@string/Password"
+	         android:inputType="textPassword" >
+
+	         <requestFocus />
+	     </EditText>
+
+		</TableRow>
+		<TableRow 
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	         android:layout_marginTop="10dp"
+		    >
+	     <TextView
+	         android:id="@+id/textView_retypepassword2"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="@string/RetypePassword"
+	 		 android:textSize="24sp"
+	         android:layout_marginLeft="15dp"
+	         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	     <EditText
+	         android:id="@+id/editText_repassword"
+	         android:layout_width="200dp"
+	         android:layout_height="wrap_content"
+	 		 android:textSize="24sp"
+	 		 android:layout_marginLeft="15dp"
+	 		 android:layout_marginRight="10dp"
+	         android:hint="@string/Password"
+	         android:inputType="textPassword" >
+
+	         <requestFocus />
+	     </EditText>
+
+		</TableRow>
+		<TableRow 
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	         android:layout_marginTop="10dp"
+		    >
+	     <TextView
+	         android:id="@+id/textView_score2"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="@string/email"
+	 		 android:textSize="24dp"
+	         android:layout_marginLeft="15dp"
+	         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	     <EditText
+	         android:id="@+id/editText_email"
+	         android:layout_width="200dp"
+	         android:layout_height="wrap_content"
+	         android:layout_marginLeft="15dp"
+	         android:layout_marginRight="10dp"
+	         android:hint="@string/email_adress"
+	         android:inputType="textPassword|textEmailAddress"
+	         android:textSize="24dp" >
+
+	         <requestFocus />
+	     </EditText>
+
+		</TableRow>
+    </TableLayout>
+    
+ 	<LinearLayout
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:layout_gravity="center"
+    	android:layout_marginTop="20dp"
+	     >
+
+ 		<Button
+ 		    android:id="@+id/button_dialog_positive"
+ 		    android:layout_width="wrap_content"
+ 		    android:layout_height="wrap_content"
+ 		    android:background="@drawable/button"
+ 		    android:layout_marginLeft="15dp"
+ 		    android:layout_marginRight="10dp"
+ 		    android:layout_marginBottom="10dp"
+			android:padding="5dp"
+ 		    android:textColor="#ffffff"
+ 		    android:textSize="30dp"
+ 		    android:text="Register" />
+ 		<Button
+ 		    android:id="@+id/button_dialog_negative"
+ 		    android:layout_width="wrap_content"
+ 		    android:layout_height="wrap_content"
+ 		    android:background="@drawable/button"
+ 		    android:textColor="#ffffff"
+ 		    android:textSize="30dp"
+			android:padding="5dp"
+ 		    android:layout_marginLeft="10dp"
+ 		    android:layout_marginRight="15dp"
+ 		    android:layout_marginBottom="10dp"
+		    android:onClick="onClick"
+ 		    android:text="Cancel" />
+ 			
+    </LinearLayout>
+
+</LinearLayout>

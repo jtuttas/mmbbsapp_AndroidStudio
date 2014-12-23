@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Namen">
+        <item>Meiss</item>
+        <item>Opitz</item>
+        <item>Zimmler</item>
+        <item>Wessel</item>
+        <item>Dörge Summann</item>
+	    <item>Brod</item>
+    </string-array>
+    
+</resources>

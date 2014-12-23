@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/menu_login" android:title="@string/menu_login"
+        android:textSize="24dp"
+        android:icon="@drawable/login"
+        ></item>
+    <item android:id="@+id/menu_resend" android:title="@string/menu_resend"
+        android:textSize="24dp"
+        android:icon="@drawable/resend"
+        ></item>
+    <item android:id="@+id/menu_register" android:title="@string/menu_register"
+        android:textSize="24dp"
+        android:icon="@drawable/register"
+        ></item>
+    
+
+</menu>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     android:background="@drawable/gradient_bg_header"
+     >
+
+   <Gallery android:id="@+id/gallery1" 
+		android:layout_width="match_parent" 
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentTop="true"
+    	android:layout_alignParentLeft="true"
+    	android:gravity="center_vertical"
+    	android:spacing="2dp"/>
+    <TextView
+        android:id="@+id/tv_organisation_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:gravity="center_horizontal|center_vertical"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/tv_organisation_funktion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ms"
+        
+        
+         />
+
+</LinearLayout>

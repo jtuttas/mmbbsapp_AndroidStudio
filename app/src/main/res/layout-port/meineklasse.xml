@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+ 
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" 
+		 android:background="@drawable/gradient_bg_header"
+		android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res-auto">
+		
+     <ImageView android:id="@+id/imageView1" 
+    android:src="@drawable/mmbbshead" 
+    android:layout_width="match_parent" 
+    android:layout_height="75dip"
+    />
+	
+    <!-- 
+    <Button style="@style/buttonstyle" 
+		android:id="@+id/button_kalender" 
+		android:layout_height="wrap_content" 
+		android:text="@string/bt_kalender" 
+		android:layout_width="match_parent">
+    </Button>
+     -->
+    
+    <!-- 
+    <Button style="@style/buttonstyle" 
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:id="@+id/button_mitglieder" 
+		android:text="@string/bt_Mitglieder">
+    </Button>
+     -->
+ 
+
+      <Button
+          android:id="@+id/button_studenplan"
+          style="@style/buttonstyle"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/imageView1"
+          android:onClick="klick_stundenplan"
+          android:text="@string/bt_stundenplan" 
+          android:textSize="24sp"
+          />
+
+      <Button
+          android:id="@+id/button_vertretungsplan"
+          style="@style/buttonstyle"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/button_studenplan"
+          android:onClick="klick_vertretungsplan"
+          android:text="@string/bt_vertretungsplan" 
+                    android:textSize="24sp"
+          
+          />
+
+      <Button
+          android:id="@+id/button_emailKlassenlehrer"
+          style="@style/buttonstyle"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/button_vertretungsplan"
+          android:onClick="klick_emailKlassenlehrer"
+          android:text="@string/bt_emailKlassenlehrer" 
+                    android:textSize="24sp"
+          
+          />
+
+      <Button
+          android:id="@+id/button_emailKlasse"
+          style="@style/buttonstyle"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/button_emailKlassenlehrer"
+          android:onClick="klick_emailKlasse"
+          android:text="@string/bt_emailKlasse" 
+                    android:textSize="24sp"
+          
+          />
+
+</RelativeLayout>

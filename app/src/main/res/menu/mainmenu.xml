@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/item_info" android:title="Info" android:icon="@android:drawable/ic_menu_info_details"></item>
+    <item android:id="@+id/item_einstellungen" android:title="Einstellungen" android:icon="@android:drawable/ic_menu_preferences"></item>
+    <item android:id="@+id/item_sync" android:title="Update DB" android:icon="@drawable/sync"></item>
+
+
+    
+</menu>

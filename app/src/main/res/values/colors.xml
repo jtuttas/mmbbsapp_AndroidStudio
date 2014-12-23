@@ -1,0 +1,16 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="free_player_color">#B8D8B8</color>
+    <color name="pending_player_color">#9F6000</color>
+    <color name="playing_player_color">#FFC0C0</color>
+    <color name="disabled_player_color">#A0A0A0</color>
+        <color name="line0">#ddA6DDE0</color>
+        <color name="line1">#dd63C3C9</color>
+        <color name="linehead">#dd2F4D79	</color>
+        <color name="chatline">#dddddddd</color>
+       
+        <color name="lineme">#ddDD7D7D</color>
+            <color name="transparent">#00000000</color>
+    <color name="tab_highlight">#ff9ecfbf</color>
+</resources>

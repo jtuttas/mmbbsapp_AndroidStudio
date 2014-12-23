@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:id="@+id/wrapper_userlist"
+        android:layout_width="fill_parent"
+        android:background="@drawable/button"
+        android:layout_height="wrap_content" >
+        
+        
+        <TextView
+            android:id="@+id/textView_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/textView_friend_image"
+            android:layout_toRightOf="@+id/textView_user_image"
+            android:padding="5dp"
+            android:textSize="22dp"
+            
+            android:text="a"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/textView_user_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView_user_name"
+            android:layout_alignBottom="@+id/textView_user_name"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/player" />
+
+        <TextView
+            android:id="@+id/textView_friend_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView_user_name"
+            android:layout_alignBottom="@+id/textView_user_name"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dip"
+            android:background="@drawable/heard_plus"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip" />
+
+    </RelativeLayout>
+
+</LinearLayout>

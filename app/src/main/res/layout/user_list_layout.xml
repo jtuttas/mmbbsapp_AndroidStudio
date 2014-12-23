@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:background="@drawable/backgound"
+     android:id="@+id/layout_users" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        
+      
+
+        <TextView
+            android:id="@+id/textView_online_users_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/linehead"
+            android:paddingLeft="10dp"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
+            android:text="@string/online_users"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+         <TextView
+            android:id="@+id/textView_number_of_users"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/redcircle"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:padding="2dp"
+            
+            android:text="1" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listView_users"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+         >
+
+    </ListView>
+
+    <EditText
+        android:id="@+id/editText_user_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mytextview"
+        android:textSize="30sp"
+        android:paddingLeft="10dp"
+        android:paddingTop="4dp"
+        android:singleLine="true"
+        android:lines="1"
+    	android:maxLines="1"
+        android:textColor="#000000"
+        android:hint="@string/filter"
+        android:ems="10"
+        android:layout_margin="5dp"
+         >
+
+        
+    </EditText>
+
+</LinearLayout>
