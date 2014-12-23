@@ -38,7 +38,7 @@ public class WebViewClientMmbbs extends WebViewClient {
 	 @Override
 	public void onReceivedError(WebView view, int errorCode,
 			String description, String failingUrl) {
-		// TODO Auto-generated method stub
+
 			Log.d(TabActivity.TAG, "WebView On Received Error: errorCode="+errorCode);
 //		super.onReceivedError(view, errorCode, description, failingUrl);
 			String html1 = "<html><body bgcolor=\"#FF0000\"><br><br><div><h1 align=\"center\">Bei der Anfrage ist ein Fehler aufgetreten!</h1><hr>";

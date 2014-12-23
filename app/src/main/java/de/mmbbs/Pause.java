@@ -28,7 +28,7 @@ public class Pause extends Activity implements Runnable{
 
 	@Override
 	protected void onStart() {
-		// TODO Auto-generated method stub
+
 		super.onStart();
 		runner = new Thread(this);
 		runner.start();

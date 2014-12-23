@@ -160,7 +160,7 @@ public class TabActivity extends android.app.TabActivity implements Loadfinished
 	@Override
 	protected void onStart() {
 		super.onStart();
-		// TODO Auto-generated method stub
+
         Log.d(TabActivity.TAG,"onStart()");
     
         
@@ -176,7 +176,7 @@ public class TabActivity extends android.app.TabActivity implements Loadfinished
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+
 		super.onResume();
 	      //adView.resume();
 		checkPlayServices();
@@ -381,7 +381,7 @@ public class TabActivity extends android.app.TabActivity implements Loadfinished
     }
     
     private boolean checkPlayServices() {
-		// TODO Auto-generated method stub
+
 		int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
 	    if (resultCode != ConnectionResult.SUCCESS) {
 	        if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
@@ -398,7 +398,7 @@ public class TabActivity extends android.app.TabActivity implements Loadfinished
 	}
     
     public void loadFinished(String s) {
-		// TODO Auto-generated method stub
+
 		Log.d(TAG,"loadFinished() UPDATE_STATE="+UPDATE_STATE+" s="+s);
 		switch (UPDATE_STATE) {
 			case NEW_VERSION:
@@ -470,7 +470,7 @@ public class TabActivity extends android.app.TabActivity implements Loadfinished
 	}
 
     public static  void setAlarm(Context context,Date pause) {
-		// TODO Auto-generated method stub
+
     	AlarmManager am = (AlarmManager) context.getSystemService(Activity.ALARM_SERVICE);
         Log.d(TabActivity.TAG, "Alarm gestellt auf "+pause.toString());
         Intent intent = new Intent(context, MyAppReciever.class);           
@@ -482,7 +482,7 @@ public class TabActivity extends android.app.TabActivity implements Loadfinished
 	}
 
 	public static Date getNextPause() {
-		// TODO Auto-generated method stub
+
 		Date d = new Date();
 		Log.d(TabActivity.TAG,"Heute ist "+d);
 		Date pause = (Date)d.clone();

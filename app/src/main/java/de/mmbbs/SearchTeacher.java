@@ -31,7 +31,7 @@ public class SearchTeacher extends Activity implements OnItemSelectedListener{
 	//public static SearchTeacher instance;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
 		super.onCreate(savedInstanceState);
 		
 		Intent intent = getIntent();
@@ -108,7 +108,7 @@ public class SearchTeacher extends Activity implements OnItemSelectedListener{
 	//@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int i,
 			long arg3) {
-		// TODO Auto-generated method stub
+
 		teacher = TabActivity.dbm.getTeacher(shortNames[i]);
 		if (teacher.getGender().compareTo("male")==0) {
 			tv.setText("Herr "+teacher.getVName()+" "+teacher.getName());
@@ -123,7 +123,7 @@ public class SearchTeacher extends Activity implements OnItemSelectedListener{
 
 	//@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
+
 		
 	}
 	

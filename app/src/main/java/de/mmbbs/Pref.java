@@ -24,7 +24,7 @@ public class Pref extends PreferenceActivity  {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
 		super.onCreate(savedInstanceState);
 		PreferenceManager.setDefaultValues(this, R.xml.einstellungen, false);
 		addPreferencesFromResource(R.xml.einstellungen);

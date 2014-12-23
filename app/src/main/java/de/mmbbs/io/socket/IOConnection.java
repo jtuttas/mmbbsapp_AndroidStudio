@@ -398,7 +398,7 @@ class IOConnection implements IOCallback {
 //						protocols.add(arr.getString(i));
 //					}
 					protocols = new ArrayList<String>();
-					protocols.add("websocket"); //FIXME
+					protocols.add("websocket");
 					
 				}catch (JSONException e) 
 				{

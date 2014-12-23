@@ -28,7 +28,7 @@ public class MeineKlasse extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
 		super.onCreate(savedInstanceState);
 		SharedPreferences prefs =  PreferenceManager.getDefaultSharedPreferences(this);
 		klasse = prefs.getString("klasse", null);
@@ -52,7 +52,7 @@ public class MeineKlasse extends Activity {
 	
 	@Override
 	protected void onStart() {
-		// TODO Auto-generated method stub
+
 		super.onStart();
 		SharedPreferences prefs =  PreferenceManager.getDefaultSharedPreferences(this);
 		String klasse = prefs.getString("klasse", "");

@@ -52,19 +52,16 @@ import android.widget.ImageView.ScaleType;
  *
  */
 public class Stundenplan extends Activity   {
+	static final String[] weekdays = new String[] {"Sa.","So.","Mo.","Di.","Mi","Do.","Fr.","Sa."};
 	/* Hier wird die aktuell ausgewaehlte Woche abgespeichert. */
 	GregorianCalendar gc;
-	
-	  private InterstitialAd interstitial;
-	
 	int week;
 	boolean errorOccured=false;
-	/* Standardwert fuer den Vertretungsplan ist false */
-	private boolean vertretungsplan=false;
-	static final String[] weekdays = new String[] {"Sa.","So.","Mo.","Di.","Mi","Do.","Fr.","Sa."}; 
 	Stundenplan instance;
 	boolean tabelle=true;
-
+	  private InterstitialAd interstitial;
+	/* Standardwert fuer den Vertretungsplan ist false */
+	private boolean vertretungsplan=false;
 	private boolean displayWerbungFirst;
 	
 	/**
@@ -117,7 +114,7 @@ public class Stundenplan extends Activity   {
 	
 				@Override
 				public void onNothingSelected(AdapterView<?> arg0) {
-					// TODO Auto-generated method stub
+
 					
 				}
 				
@@ -468,7 +465,8 @@ public class Stundenplan extends Activity   {
     protected void setVertretungsplan(boolean vertretungsplan) {
     	this.vertretungsplan=vertretungsplan;
     }
-    
+
+    // test
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
     	if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -484,56 +482,10 @@ public class Stundenplan extends Activity   {
     		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
     		Calendar c = Calendar.getInstance(); 
     		int dayOfYear = c.get(Calendar.DAY_OF_YEAR);
-    		/*
-    		if (pref.getInt("werbung", -1) != dayOfYear ) {
-    			
-    			Editor e = pref.edit();
-        		e.putInt("werbung", dayOfYear);
-        		e.commit();
-        		
-        		AlertDialog.Builder aboutView = new AlertDialog.Builder(this);
-    	        aboutView.setTitle("Werbung");
 
-    	           //aboutView.setMessage(R.string.about_text);
-    	        ScrollView sv = new ScrollView(this);
-    	             
-    	        LinearLayout credits = new LinearLayout(this);
-    	        credits.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-    	        credits.setOrientation(LinearLayout.VERTICAL);
-    	        credits.setBackgroundColor(0x000000);
-                ImageView img = new ImageView(this);
-                img.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-                img.setScaleType(ScaleType.CENTER_INSIDE);
-                img.setImageResource(R.drawable.uncletuttas);
-                img.setBackgroundColor(0x000000);
-                credits.addView(img);
-               
-                TextView tv = new TextView(this);
-                tv.setText("Unterstützen Sie die IT-Fete und klicken Sie auf die Werbung!");
-                tv.setGravity(Gravity.CENTER);
-                credits.addView(tv);
-                sv.addView(credits);
-                aboutView.setView(sv);
-                aboutView.setPositiveButton(R.string.btn_ok, null);
-                aboutView.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-                	                public void onClick(DialogInterface dialog,int id) {
-                	                    // go to a new activity of the app
-                	                	displayInterstitial();
-                	                	instance.finish();
-                	                }
-                	              });
-
-               //aboutView.setIcon(R.drawable.mine);
-                aboutView.show();
-    			
-    		}
-    		else {
-    		*/	
-    		
             	displayInterstitial();
     			instance.finish();
-    		//}
-    		
+
                		
 
     		return true;

@@ -38,7 +38,7 @@ public class UmsatzActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
 		super.onCreate(savedInstanceState);
 		Log.d(TabActivity.TAG, "onCreate");
         setContentView(R.layout.umsatz);
@@ -53,18 +53,18 @@ public class UmsatzActivity extends Activity {
 
 	@Override
 	protected void onStart() {
-		// TODO Auto-generated method stub
+
 		super.onStart();
 		
 	}
 
 	 private void receiveValues() {
-		// TODO Auto-generated method stub
+
 		 new AsyncTask<Void, Void, String>() {
 
 			@Override
 			protected void onPostExecute(String result) {
-				// TODO Auto-generated method stub
+
 				super.onPostExecute(result);
 				Log.d(TabActivity.TAG,"XML="+xmlRevenue);
 				parseXML(xmlRevenue);
@@ -74,7 +74,7 @@ public class UmsatzActivity extends Activity {
 
 			@Override
 			protected String doInBackground(Void... params) {
-				// TODO Auto-generated method stub
+
 				try {
         		    // Create a URL for the desired page
         		    URL url = new URL(TabActivity.DB_URL+"revenue/");
@@ -225,8 +225,7 @@ public class UmsatzActivity extends Activity {
 	   
 	   @Override
 	   public void onClick(View arg0) {
-	    // TODO Auto-generated method stub
-	    
+
 	    SeriesSelection series_selection=mChart.getCurrentSeriesAndPoint();
 	    
 	    if(series_selection!=null)
