@@ -334,4 +334,11 @@
       <string name="won">won</string>
       <string name="lost">lost</string>
       <string name="rank">Rank</string>
+    <string name="startgame">Start Game</string>
+    <string name="hilfe">Hilfe</string>
+    <string name="back">zurück</string>
+    <string name="player1">Spieler 1</string>
+    <string name="player2">Spieler 2</string>
+    <string name="start_game">Starte Spiel</string>
+    <string name="cont_game">Spiel fortsätzen</string>
 </resources>

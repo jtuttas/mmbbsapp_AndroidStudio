@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/curved_shape"
+    android:orientation="vertical" 
+    android:id="@+id/layout_dialog_main"
+    >
+
+	 
+	<TableLayout 
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	    
+	    >
+		<TableRow 
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:layout_marginTop="10dp"
+		    >
+	     <TextView
+	         android:id="@+id/textView1"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="@string/player1"
+	 		 android:textSize="24sp"
+	         android:layout_marginLeft="15dp"
+	         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	     <EditText
+	         android:id="@+id/editText_player1"
+	         android:layout_width="200dp"
+	         android:layout_height="wrap_content"
+	 		 android:textSize="24sp"
+	 		 android:layout_marginLeft="15dp"
+	 		 android:layout_marginRight="10dp"
+	          />
+	       <requestFocus />
+	     
+
+		</TableRow>
+		<TableRow 
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	         android:layout_marginTop="10dp"
+		    >
+	     <TextView
+	         android:id="@+id/textView_score"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="@string/player2"
+	 		 android:textSize="24sp"
+	         android:layout_marginLeft="15dp"
+	         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	     <EditText
+	         android:id="@+id/editText_player2"
+	         android:layout_width="200dp"
+	         android:layout_height="wrap_content"
+	 		 android:textSize="24sp"
+	 		 android:layout_marginLeft="15dp"
+	 		 android:layout_marginRight="10dp"
+	         >
+
+	     </EditText>
+
+		</TableRow>
+    </TableLayout>
+    
+ 	<LinearLayout
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:layout_gravity="center"
+    	android:layout_marginTop="20dp"
+	     >
+
+ 		<Button
+ 		    android:id="@+id/button_dialog_positive"
+ 		    android:layout_width="wrap_content"
+ 		    android:layout_height="wrap_content"
+ 		    android:layout_marginBottom="10dp"
+ 		    android:layout_marginLeft="15dp"
+ 		    android:layout_marginRight="10dp"
+ 		    android:background="@drawable/button"
+ 		    
+ 		    android:padding="5dp"
+ 		    android:text="@string/start_game"
+ 		    android:textColor="#ffffff"
+ 		    android:textSize="12dp" />
+ 			<Button
+ 		    android:id="@+id/button_dialog_negative"
+ 		    android:layout_width="wrap_content"
+ 		    android:layout_height="wrap_content"
+ 		    android:layout_marginBottom="10dp"
+ 		    android:layout_marginLeft="15dp"
+ 		    android:layout_marginRight="10dp"
+ 		    android:background="@drawable/button"
+ 		    
+ 		    android:padding="5dp"
+ 		    android:text="@string/cont_game"
+ 		    android:textColor="#ffffff"
+ 		    android:textSize="12dp" />
+    </LinearLayout>
+
+</LinearLayout>

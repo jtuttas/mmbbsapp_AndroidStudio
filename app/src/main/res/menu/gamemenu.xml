@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item 
+    	android:id="@+id/help" 
+    	android:title="@string/hilfe" android:icon="@android:drawable/ic_menu_help"></item>
+    <item 
+    	android:id="@+id/back" 
+    	android:title="@string/back" android:icon="@android:drawable/ic_menu_revert"></item> 
+</menu>

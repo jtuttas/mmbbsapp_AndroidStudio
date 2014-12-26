@@ -144,6 +144,7 @@ public abstract class GameManagementActivity extends Activity implements
 		Log.d(Main.TAG, "!!update request in GameManagement Activity command="
 				+ obj.optString("command"));
 		if (obj.optString("command").compareTo("request") == 0) {
+            cdd=null;
 			this.showRequestDialog(obj.optString("from_player"),obj.optString("game"));
 
 		} else if (obj.optString("command").compareTo("request_acknowledged") == 0) {
