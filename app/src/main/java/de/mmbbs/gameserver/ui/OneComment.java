@@ -1,4 +1,4 @@
-package de.mmbbs.tictactoetournament;
+package de.mmbbs.gameserver.ui;
 
 public class OneComment {
 	public String comment;

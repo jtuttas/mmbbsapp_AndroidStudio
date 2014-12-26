@@ -1,19 +1,8 @@
 package de.mmbbs.tictactoetournament.game;
 
-import de.mmbbs.tictactoetournament.Main;
-
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.util.Log;
 
 public class Player {
 

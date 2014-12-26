@@ -1,20 +1,10 @@
 package de.mmbbs.tictactoetournament.game;
-import de.mmbbs.gameserver.GameServerApplication;
-import de.mmbbs.tictactoetournament.CustomDialogClass;
-import de.mmbbs.tictactoetournament.CustomDialogListener;
-import de.mmbbs.tictactoetournament.CustomDialogType;
-import de.mmbbs.tictactoetournament.Main;
-import de.mmbbs.tictactoetournament.game.Runner;
+import de.mmbbs.gameserver.ui.Main;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Rect;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -22,7 +12,6 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.Toast;
 
 public class Leinwand extends SurfaceView implements OnTouchListener  {
 

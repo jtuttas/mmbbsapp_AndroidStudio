@@ -1,16 +1,12 @@
 package de.mmbbs;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
-import de.mmbbs.tictactoetournament.FontOverride;
+import de.mmbbs.gameserver.ui.FontOverride;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;

@@ -1,13 +1,9 @@
 package de.mmbbs.gameserver;
 
-import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,18 +17,15 @@ import de.mmbbs.io.socket.IOAcknowledge;
 import de.mmbbs.io.socket.IOCallback;
 import de.mmbbs.io.socket.SocketIO;
 import de.mmbbs.io.socket.SocketIOException;
-import de.mmbbs.tictactoetournament.FragmentActivity;
-import de.mmbbs.tictactoetournament.Main;
+import de.mmbbs.gameserver.ui.FragmentActivity;
+import de.mmbbs.gameserver.ui.Main;
 
-import android.app.Activity;
 import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.backup.BackupManager;
 import android.content.Intent;
 import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 
 public class GameServerApplication extends Application implements IOCallback {

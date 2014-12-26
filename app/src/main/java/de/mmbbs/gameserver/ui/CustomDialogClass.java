@@ -1,4 +1,4 @@
-package de.mmbbs.tictactoetournament;
+package de.mmbbs.gameserver.ui;
 
 import de.mmbbs.R;
 import android.app.Activity;

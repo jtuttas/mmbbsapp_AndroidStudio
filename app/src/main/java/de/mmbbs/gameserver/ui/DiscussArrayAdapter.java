@@ -1,4 +1,4 @@
-package de.mmbbs.tictactoetournament;
+package de.mmbbs.gameserver.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,6 @@ import de.mmbbs.R;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;

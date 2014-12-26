@@ -9,7 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-import de.mmbbs.tictactoetournament.Main;
+import de.mmbbs.gameserver.ui.Main;
 
 import android.content.Context;
 import android.graphics.Bitmap;

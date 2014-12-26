@@ -1,6 +1,6 @@
 package de.mmbbs;
 
-import de.mmbbs.tictactoetournament.Main;
+import de.mmbbs.gameserver.ui.Main;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;

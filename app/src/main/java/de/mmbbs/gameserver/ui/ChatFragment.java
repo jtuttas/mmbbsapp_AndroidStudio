@@ -1,40 +1,24 @@
-package de.mmbbs.tictactoetournament;
+package de.mmbbs.gameserver.ui;
 
-import java.util.List;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import de.mmbbs.R;
 import de.mmbbs.gameserver.GameChatListener;
-import de.mmbbs.gameserver.GameManagementActivity;
 import de.mmbbs.gameserver.GameServerApplication;
-import de.mmbbs.gameserver.GameServerListener;
-import de.mmbbs.gameserver.GameStates;
-import de.mmbbs.gameserver.User;
-import android.app.Activity;
-import android.app.AlertDialog;
+
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.TextView.OnEditorActionListener;
 
 public class ChatFragment extends Fragment implements OnEditorActionListener,

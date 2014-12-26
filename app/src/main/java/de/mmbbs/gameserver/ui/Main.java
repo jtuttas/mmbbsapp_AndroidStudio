@@ -1,15 +1,8 @@
-package de.mmbbs.tictactoetournament;
+package de.mmbbs.gameserver.ui;
 
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Map;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import de.mmbbs.R;
@@ -18,41 +11,25 @@ import de.mmbbs.gameserver.GameServerListener;
 import de.mmbbs.gameserver.GameUserListener;
 
 import de.mmbbs.gameserver.User;
-import de.mmbbs.io.socket.IOAcknowledge;
-import de.mmbbs.io.socket.IOCallback;
-import de.mmbbs.io.socket.SocketIO;
-import de.mmbbs.io.socket.SocketIOException;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.Path.Direction;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ImageView.ScaleType;
-
 
 
 @SuppressLint("NewApi")

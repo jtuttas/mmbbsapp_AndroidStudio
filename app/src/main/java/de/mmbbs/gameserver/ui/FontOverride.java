@@ -1,4 +1,4 @@
-package de.mmbbs.tictactoetournament;
+package de.mmbbs.gameserver.ui;
 
 import java.lang.reflect.Field;
 import android.content.Context;

@@ -1,43 +1,20 @@
-package de.mmbbs.tictactoetournament;
-
-import java.util.List;
-
-import org.json.JSONObject;
+package de.mmbbs.gameserver.ui;
 
 import de.mmbbs.R;
 import de.mmbbs.gameserver.GameManagementActivity;
 import de.mmbbs.gameserver.GameServerApplication;
-import de.mmbbs.gameserver.GameServerListener;
-import de.mmbbs.gameserver.GameStates;
-import de.mmbbs.gameserver.GameUserListener;
-import de.mmbbs.gameserver.User;
-import de.mmbbs.gameserver.UserState;
-import de.mmbbs.tictactoetournament.game.Game;
-import android.app.Activity;
+
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.AdapterView.AdapterContextMenuInfo;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+
 public class FragmentActivity extends GameManagementActivity {
 	// Declaring our tabs and the corresponding fragments.
 		ActionBar.Tab userTab, chatTab,highscoreTab;
@@ -167,7 +144,7 @@ public class FragmentActivity extends GameManagementActivity {
 			        Log.d(Main.TAG,":-( kein Extra ");
 			        
 			} else {
-				if (extras.getString("command").compareTo("request")==0) {
+				if (extras.getString("command")!=null && extras.getString("command").compareTo("request")==0) {
 					
 					showRequestDialog(extras.getString("from_player"),extras.getString("game"));
 					getIntent().removeExtra("command");

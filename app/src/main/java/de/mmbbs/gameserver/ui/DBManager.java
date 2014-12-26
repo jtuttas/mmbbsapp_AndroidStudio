@@ -1,4 +1,4 @@
-package de.mmbbs.tictactoetournament;
+package de.mmbbs.gameserver.ui;
 
 import android.content.Context;
 import android.database.Cursor;

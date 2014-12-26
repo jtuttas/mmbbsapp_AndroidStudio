@@ -1,43 +1,26 @@
-package de.mmbbs.tictactoetournament;
+package de.mmbbs.gameserver.ui;
 
-import java.util.Iterator;
 import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import de.mmbbs.R;
 import de.mmbbs.gameserver.GameManagementActivity;
 import de.mmbbs.gameserver.GameServerApplication;
-import de.mmbbs.gameserver.GameServerListener;
-import de.mmbbs.gameserver.GameStates;
 import de.mmbbs.gameserver.GameUserListener;
 import de.mmbbs.gameserver.User;
 import de.mmbbs.gameserver.UserState;
-import android.app.Activity;
-import android.app.AlertDialog;
+
 import android.app.Fragment;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnKeyListener;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
@@ -45,7 +28,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 public class UserListFragment extends Fragment implements OnItemClickListener, TextWatcher,GameUserListener{

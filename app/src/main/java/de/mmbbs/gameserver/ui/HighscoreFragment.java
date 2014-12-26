@@ -1,42 +1,24 @@
-package de.mmbbs.tictactoetournament;
-
-import java.lang.reflect.Field;
-import java.util.List;
+package de.mmbbs.gameserver.ui;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import de.mmbbs.R;
 import de.mmbbs.gameserver.GameHighscoreListener;
-import de.mmbbs.gameserver.GameManagementActivity;
 import de.mmbbs.gameserver.GameServerApplication;
-import de.mmbbs.gameserver.GameServerListener;
-import de.mmbbs.gameserver.GameStates;
-import de.mmbbs.gameserver.User;
-import android.app.Activity;
-import android.app.AlertDialog;
+
 import android.app.Fragment;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class HighscoreFragment extends Fragment implements GameHighscoreListener {
 

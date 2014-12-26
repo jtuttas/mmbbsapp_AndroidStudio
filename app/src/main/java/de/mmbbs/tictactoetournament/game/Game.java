@@ -6,16 +6,13 @@ import com.google.android.gms.ads.*;
 
 
 import de.mmbbs.gameserver.GameManagementActivity;
-import de.mmbbs.gameserver.GameServerApplication;
 import de.mmbbs.gameserver.GameStates;
 import de.mmbbs.gameserver.PlayGameListener;
-import de.mmbbs.tictactoetournament.CustomDialogClass;
-import de.mmbbs.tictactoetournament.CustomDialogListener;
-import de.mmbbs.tictactoetournament.CustomDialogType;
-import de.mmbbs.tictactoetournament.Main;
+import de.mmbbs.gameserver.ui.CustomDialogClass;
+import de.mmbbs.gameserver.ui.CustomDialogListener;
+import de.mmbbs.gameserver.ui.CustomDialogType;
+import de.mmbbs.gameserver.ui.Main;
 
-import android.app.Activity;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -23,7 +20,6 @@ import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;

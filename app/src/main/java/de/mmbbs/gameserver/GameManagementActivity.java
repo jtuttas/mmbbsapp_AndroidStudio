@@ -3,11 +3,11 @@ package de.mmbbs.gameserver;
 import org.json.JSONObject;
 
 import de.mmbbs.R;
-import de.mmbbs.tictactoetournament.CustomDialogClass;
-import de.mmbbs.tictactoetournament.CustomDialogListener;
-import de.mmbbs.tictactoetournament.CustomDialogType;
-import de.mmbbs.tictactoetournament.FontOverride;
-import de.mmbbs.tictactoetournament.Main;
+import de.mmbbs.gameserver.ui.CustomDialogClass;
+import de.mmbbs.gameserver.ui.CustomDialogListener;
+import de.mmbbs.gameserver.ui.CustomDialogType;
+import de.mmbbs.gameserver.ui.FontOverride;
+import de.mmbbs.gameserver.ui.Main;
 import de.mmbbs.tictactoetournament.game.Game;
 import android.app.Activity;
 import android.content.Intent;
