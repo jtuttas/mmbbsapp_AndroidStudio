@@ -371,17 +371,20 @@ public class GameServerApplication extends Application implements IOCallback {
 						intent.putExtra("command", "request");
 						intent.putExtra("from_player",
 								obj.optString("from_player", "unknown"));
+                        intent.putExtra("game", obj.optString("game"));
 
 						PendingIntent pIntent = PendingIntent.getActivity(this,
 								0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 						Notification n = new Notification.Builder(this)
-								.setContentTitle("TicTacToe@MMBBS")
+								.setContentTitle("Games@MMBBS")
 								.setVibrate(new long[] { 1000, 1000 })
 								.setContentText(
 										"Request from "
 												+ obj.optString("from_player",
-														"unknown"))
+														"unknown")
+                                                +" for game "+obj.optString("game","unknown")
+                                )
 								.setSmallIcon(R.drawable.icon)
 								.setContentIntent(pIntent).setAutoCancel(true)
 								.build();
@@ -468,46 +471,51 @@ public class GameServerApplication extends Application implements IOCallback {
 			try {
 				String json = args[0].toString();
 				final JSONObject obj = new JSONObject(json);
-				userlist.clear();
-				Iterator<?> keys = obj.keys();
-				while (keys.hasNext()) {
-					String key = (String) keys.next();
-					try {
-						if (obj.get(key) instanceof JSONObject) {
-							JSONObject o = (JSONObject) obj.get(key);
-							User u = new User(o.optString("name"));
-							Log.d(Main.TAG,
-									"GameServer updateusers name="
-											+ u.getName());
-							if (o.optString("ingame").compareTo("freeplayer") == 0) {
-								u.setState(UserState.FREE);
-							} else if (o.optString("ingame").compareTo(
-									"playerpending") == 0) {
-								u.setState(UserState.PENDING);
-							} else if (o.optString("ingame").compareTo(
-									"playerplay") == 0) {
-								u.setState(UserState.IN_GAME);
-							}
-							if (user.compareTo(u.getName()) != 0)
-								this.add(u);
-						}
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-				}
-				Log.d(Main.TAG, " userlist size=" + userlist.size());
+                if (obj.optString("game").compareTo(Main.GAME)==0) {
+                    userlist.clear();
+                    Iterator<?> keys = obj.keys();
+                    while (keys.hasNext()) {
+                        String key = (String) keys.next();
+                        try {
+                            if (obj.get(key) instanceof JSONObject) {
+                                JSONObject o = (JSONObject) obj.get(key);
+                                User u = new User(o.optString("name"));
+                                Log.d(Main.TAG,
+                                        "GameServer updateusers name="
+                                                + u.getName());
+                                if (o.optString("ingame").compareTo("freeplayer") == 0) {
+                                    u.setState(UserState.FREE);
+                                } else if (o.optString("ingame").compareTo(
+                                        "playerpending") == 0) {
+                                    u.setState(UserState.PENDING);
+                                } else if (o.optString("ingame").compareTo(
+                                        "playerplay") == 0) {
+                                    u.setState(UserState.IN_GAME);
+                                }
+                                if (user.compareTo(u.getName()) != 0)
+                                    this.add(u);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    Log.d(Main.TAG, " userlist size=" + userlist.size());
 
-				if (gameuserhandler != null) {
-					gameuserhandler.post(new Runnable() {
+                    if (gameuserhandler != null) {
+                        gameuserhandler.post(new Runnable() {
 
-						@Override
-						public void run() {
-							Log.d(Main.TAG, "updateUser() 2");
-							userlistener.updateUsers(userlist);
+                            @Override
+                            public void run() {
+                                Log.d(Main.TAG, "updateUser() 2");
+                                userlistener.updateUsers(userlist);
 
-						}
-					});
-				}
+                            }
+                        });
+                    }
+                }
+                else {
+                    Log.d(Main.TAG," kein Handlungsbedarf, war nicht das angezeigte Spiel");
+                }
 			} catch (JSONException e1) {
 				e1.printStackTrace();
 			}
@@ -694,7 +702,7 @@ public class GameServerApplication extends Application implements IOCallback {
 		}
 	}
 
-	public void request(String to_player, String command) {
+	public void request(String to_player, String command, String game) {
 		Log.d(Main.TAG, "GameServer request to_player=" + to_player
 				+ " command=" + command);
 		if (command.compareTo("request_acknowledged") == 0) {
@@ -769,6 +777,10 @@ public class GameServerApplication extends Application implements IOCallback {
 	public ArrayList<User> getUserList() {
 		return userlist;
 	}
+
+    public void resetUserList() {
+        userlist = new ArrayList<User>();
+    }
 
 	public void setActivityVisible(boolean b) {
 		activityVisible = b;

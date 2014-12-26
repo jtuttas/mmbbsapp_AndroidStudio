@@ -35,7 +35,23 @@ public class Spiele extends Activity {
 			Toast.makeText(this, "Du musst eine Klasse hinterlegen", Toast.LENGTH_LONG).show();
 		}
 		else {
-			startActivity(new Intent(this,Main.class));
+            Intent i = new Intent(this,Main.class);
+            i.putExtra("splashImage",R.drawable.tic_tac_toe_titel);
+            i.putExtra("gamename","tttmmbbs");
+            startActivity(i);
 		}
 	}
+    public void klick_four2win(View v) {
+        SharedPreferences prefs =  PreferenceManager.getDefaultSharedPreferences(this);
+        klasse = prefs.getString("klasse", null);
+        if (klasse==null) {
+            Toast.makeText(this, "Du musst eine Klasse hinterlegen", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Intent i = new Intent(this,Main.class);
+            i.putExtra("splashImage",R.drawable.four2win_titel);
+            i.putExtra("gamename","four2win");
+            startActivity(i);
+        }
+    }
 }

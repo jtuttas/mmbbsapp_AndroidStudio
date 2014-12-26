@@ -9,6 +9,13 @@
         <dex dex="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\classes-c7e2c292ab7871c9a45c6b4da46ef42c7e7c3770.jar" />
     </item>
     <item
+        jar="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\libs\achartengine-1.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
+        <dex dex="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\achartengine-1.1.0-f364884c2f7adcff68cfd19d23cf13ff38c741e5.jar" />
+    </item>
+    <item
         jar="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\libs\socketio.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -21,13 +28,6 @@
         revision="21.1.2"
         sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
         <dex dex="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-756db7215d7d17bf822e7ef334391fb4a8cf14ff.jar" />
-    </item>
-    <item
-        jar="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\libs\achartengine-1.1.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
-        <dex dex="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\pre-dexed\debug\achartengine-1.1.0-f364884c2f7adcff68cfd19d23cf13ff38c741e5.jar" />
     </item>
     <item
         jar="C:\Users\jtutt_000\AndroidStudioProjects\mmbbsapp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"

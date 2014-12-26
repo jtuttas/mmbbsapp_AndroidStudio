@@ -70,6 +70,7 @@ public abstract class GameManagementActivity extends Activity implements
 			}
 			if (gc.getState() == GameStates.LOGGED_IN
 					|| gc.getState() == GameStates.REQUEST_PENDING) {
+                cdd=null;
 				onLogin();
 			}
 		}
@@ -90,9 +91,9 @@ public abstract class GameManagementActivity extends Activity implements
 		if (this.getCustomDialog().isShowing()) {
 			// Dieser Client wurde angefragt
 			if (gc.getPendingRequestToPlayer().compareTo(gc.getUser()) == 0) {
-				gc.request(gc.getPendingRequestFromPlayer(), "request_rejected");
+				gc.request(gc.getPendingRequestFromPlayer(), "request_rejected",Main.GAME);
 			} else {
-				gc.request(gc.getPendingRequestToPlayer(), "cancelrequest");
+				gc.request(gc.getPendingRequestToPlayer(), "cancelrequest",Main.GAME);
 			}
 			this.getCustomDialog().dismiss();
 			gc.setPendingrequest(null, null, 0);
@@ -143,7 +144,7 @@ public abstract class GameManagementActivity extends Activity implements
 		Log.d(Main.TAG, "!!update request in GameManagement Activity command="
 				+ obj.optString("command"));
 		if (obj.optString("command").compareTo("request") == 0) {
-			this.showRequestDialog(obj.optString("from_player"));
+			this.showRequestDialog(obj.optString("from_player"),obj.optString("game"));
 
 		} else if (obj.optString("command").compareTo("request_acknowledged") == 0) {
 			Log.d(Main.TAG,
@@ -180,10 +181,10 @@ public abstract class GameManagementActivity extends Activity implements
 
 	}
 
-	public void showRequestDialog(final String from) {
+	public void showRequestDialog(final String from, final String game) {
 
 		this.getCustomDialog().setType(CustomDialogType.INFO);
-		this.getCustomDialog().setContent("Request from player '" + from + "'");
+		this.getCustomDialog().setContent("Request from player '" + from + "' for game "+game);
 		this.getCustomDialog().setPositiveMsg(
 				this.getResources().getString(R.string.ok));
 		this.getCustomDialog().setNegativeMsg(
@@ -192,7 +193,7 @@ public abstract class GameManagementActivity extends Activity implements
 
 			@Override
 			public void onNegativeButton() {
-				gc.request(from, "request_rejected");
+				gc.request(from, "request_rejected",game);
 				Log.d(Main.TAG, "Request rejected!");
 				gc.setPendingrequest(null, null, 0);
 
@@ -207,7 +208,7 @@ public abstract class GameManagementActivity extends Activity implements
 				getCustomDialog().setNegativeMsg(null);
 				getCustomDialog().setCancelable(false);
 				getCustomDialog().show();
-				gc.request(from, "request_acknowledged");
+				gc.request(from, "request_acknowledged",game);
 			}
 
 		});

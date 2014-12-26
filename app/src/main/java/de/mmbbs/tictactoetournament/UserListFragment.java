@@ -83,9 +83,9 @@ public class UserListFragment extends Fragment implements OnItemClickListener, T
 		this.rootView=rootView;
         return rootView;
     }
-	
-	
-	@Override
+
+
+    @Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 	    getActivity().getMenuInflater().inflate(R.menu.player_context, menu);
 		AdapterView.AdapterContextMenuInfo acmi = (AdapterContextMenuInfo) menuInfo;
@@ -152,7 +152,7 @@ public class UserListFragment extends Fragment implements OnItemClickListener, T
 
 				@Override
 				public void onNegativeButton() {
-			    	gc.request(u.getName(), "cancelrequest");
+			    	gc.request(u.getName(), "cancelrequest",Main.GAME);
 					gc.setPendingrequest(null, null,0);
 
 				}
@@ -167,7 +167,7 @@ public class UserListFragment extends Fragment implements OnItemClickListener, T
 			customDialog.update();
 			customDialog.show();
 			gc.setPendingrequest(gc.getUser(), u.getName(),GameServerApplication.REQUEST);
-	    	gc.request(u.getName(), "request");
+	    	gc.request(u.getName(), "request",Main.GAME);
 		}
 		else {
 			Toast.makeText(getActivity(),getResources().getString(R.string.not_a_free_player), Toast.LENGTH_LONG).show();				

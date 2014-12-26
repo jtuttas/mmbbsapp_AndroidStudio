@@ -59,7 +59,7 @@ import android.widget.ImageView.ScaleType;
 public class Main extends Activity implements GameServerListener,GameUserListener, LoginDialogListener{
 	
 	public static final String TAG=Main.GAME;
-	public static final String GAME="tttmmbbs";
+	public static  String GAME="tttmmbbs";
 	private GameServerApplication gs;
 	private SharedPreferences pref;
 	private Handler handler;
@@ -83,7 +83,12 @@ public class Main extends Activity implements GameServerListener,GameUserListene
 		FontOverride.setDefaultFont(this, "MONOSPACE", "fonts/Isserley-Bold.otf");
 		FontOverride.setDefaultFont(this, "SANS_SERIF", "fonts/Isserley-Bold.otf");
 		dbm = new DBManager(this, "friends.db", null, 1);
-	}
+        Bundle extras = getIntent().getExtras();
+        GAME=extras.getString("gamename");
+        Log.d(Main.TAG," Main.oncreate() GameName="+GAME);
+        ImageView iv = (ImageView) this.findViewById(R.id.imageViewSplashScreen);
+        iv.setImageResource(extras.getInt("splashImage"));
+    }
 	
 	
 

@@ -25,5 +25,16 @@
                     android:textSize="24sp"
           
            />
+    <Button
+        android:id="@+id/button_four2win"
+        style="@style/buttonstyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="klick_four2win"
+        android:text="Four2Win@mmbbs"
+        android:textSize="24sp"
+        android:layout_below="@+id/button_ttt"
+        android:layout_alignLeft="@+id/button_ttt"
+        android:layout_alignStart="@+id/button_ttt" />
 
 </RelativeLayout>

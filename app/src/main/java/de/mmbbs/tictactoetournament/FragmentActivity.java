@@ -103,7 +103,7 @@ public class FragmentActivity extends GameManagementActivity {
 			        
 			} else {
 				if (extras.getString("command").compareTo("request")==0) {
-					showRequestDialog(extras.getString("from_player"));
+					showRequestDialog(extras.getString("from_player"),extras.getString("game"));
 					getIntent().removeExtra("command");
 					getIntent().removeExtra("from_player");
 			    }
@@ -169,7 +169,7 @@ public class FragmentActivity extends GameManagementActivity {
 			} else {
 				if (extras.getString("command").compareTo("request")==0) {
 					
-					showRequestDialog(extras.getString("from_player"));
+					showRequestDialog(extras.getString("from_player"),extras.getString("game"));
 					getIntent().removeExtra("command");
 					getIntent().removeExtra("from_player");
 			    }
