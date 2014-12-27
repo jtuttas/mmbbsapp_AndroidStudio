@@ -14,7 +14,7 @@ public class AnimatedObject extends Object2D {
 	
 	public AnimatedObject(int id, Context context,int segments) {
 		super(id, context);
-		// TODO Auto-generated constructor stub
+
 		this.segments=segments;
 		rect = new Rect(x,y,x+bitmap.getWidth()/segments,y+bitmap.getHeight());
 		frame=0;
@@ -23,20 +23,20 @@ public class AnimatedObject extends Object2D {
 
 	@Override
 	public int getWidth() {
-		// TODO Auto-generated method stub
+
 		return super.getWidth()/segments;
 	}
 
 	@Override
 	public void setPosition(int xPos, int yPos) {
-		// TODO Auto-generated method stub
+
 		super.setPosition(xPos, yPos);
 		rect.set(x, y, x+bitmap.getWidth()/segments, y+bitmap.getHeight());
 	}
 
 	@Override
 	public void paint(Canvas c, Paint p) {
-		// TODO Auto-generated method stub
+
 		c.drawBitmap(bitmap, srcRect, rect, p);
 	}
 	

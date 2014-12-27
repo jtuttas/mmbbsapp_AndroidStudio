@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.util.Log;
 
 import de.mmbbs.R;
+import de.mmbbs.gameserver.ui.Main;
 
 public class GameBoard {
 	private StoneColor[][]board=new StoneColor[7][6];
@@ -168,7 +169,7 @@ public class GameBoard {
 	}
 
 	public static GameBoard getInstance(Context context) {
-		// TODO Auto-generated method stub
+
 		if (instance==null) {
 			instance = new GameBoard(context);
 			instance.init();
@@ -177,6 +178,7 @@ public class GameBoard {
 	}
 
 
-	
-	
+    public int getWidth() {
+        return width;
+    }
 }

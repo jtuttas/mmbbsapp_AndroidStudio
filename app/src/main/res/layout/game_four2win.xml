@@ -26,7 +26,7 @@
                 android:src="@drawable/red" />
 
             <TextView
-                android:id="@+id/textViewplayerLeft"
+                android:id="@+id/four2winTextViewplayerLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -38,7 +38,7 @@
                 android:textSize="30sp" />
 
             <ProgressBar
-                android:id="@+id/progressBarleft"
+                android:id="@+id/four2winProgressBarleft"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
 		    android:layout_weight="1" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/four2winTextViewScoreLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -97,7 +97,7 @@
                 android:src="@drawable/yellow" />
 
             <TextView
-                android:id="@+id/textViewplayerRight"
+                android:id="@+id/four2winTextViewplayerRight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -109,7 +109,7 @@
                 android:textSize="30sp" />
 
             <ProgressBar
-                android:id="@+id/ProgressBarright"
+                android:id="@+id/four2winProgressBarright"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
 		    android:layout_weight="1" >
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/four2winTextViewScoreRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -163,7 +163,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1" >
 
-        <de.tuttas.four2win.Leinwand
+        <de.mmbbs.four2win.Leinwand
             android:id="@+id/gui"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

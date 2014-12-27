@@ -26,7 +26,7 @@ public class Runner implements Runnable {
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+
 		Canvas c = null;
 		while (running) {
 			c=null;
@@ -53,7 +53,7 @@ public class Runner implements Runnable {
 				if ((15-diff)>0)
 				Thread.sleep(15-diff);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 		}

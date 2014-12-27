@@ -23,7 +23,7 @@ public class CustomDialogClass extends Dialog  implements android.view.View.OnCl
 	  
 	  public CustomDialogClass(Activity a,CustomDialogType type,String msg,String pos_button_text,String neg_button_text) {
 	    super(a);
-	    // TODO Auto-generated constructor stub
+
 	    this.c = a;
 	    this.msg=msg;
 	    this.pos_txt=pos_button_text;

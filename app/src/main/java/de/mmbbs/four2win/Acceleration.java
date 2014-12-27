@@ -52,7 +52,7 @@ public class Acceleration {
 	}
 
 	public void bounce() {
-		// TODO Auto-generated method stub
+
 		ticks=ticks-2;
 		this.tick();
 		v0=(-a*ticks)-v0-2*a;

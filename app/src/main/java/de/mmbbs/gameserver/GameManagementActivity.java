@@ -152,14 +152,14 @@ public abstract class GameManagementActivity extends Activity implements
 					"---> request acknowladged in GameManagement Activity");
 			this.getCustomDialog().dismiss();
 			gc.setPendingrequest(null, null, 0);
-			startGame(false, obj.optString("from_player"));
+			startGame(false, obj.optString("from_player"),obj.optString("game"));
 
 		} else if (obj.optString("command").compareTo("request_finished") == 0) {
 			Log.d(Main.TAG,
 					"-----> request finished in GameManagement Activity");
 			this.getCustomDialog().dismiss();
 			gc.setPendingrequest(null, null, 0);
-			startGame(true, obj.optString("from_player"));
+			startGame(true, obj.optString("from_player"),obj.optString("game"));
 		} else if (obj.optString("command").compareTo("request_rejected") == 0) {
 			this.getCustomDialog().dismiss();
 			gc.setPendingrequest(null, null, 0);
@@ -219,12 +219,19 @@ public abstract class GameManagementActivity extends Activity implements
 		getCustomDialog().show();
 	}
 
-	private void startGame(boolean turn, String gegner) {
-		Intent i = new Intent(this, Game.class);
-		i.putExtra("start", turn);
+	private void startGame(boolean turn, String gegner,String game) {
 
-		i.putExtra("gegner", gegner);
-		startActivity(i);
+        Intent i=null;
+        if (game.compareTo("tttmmbbs")==0) {
+            i = new Intent(this, de.mmbbs.tictactoetournament.game.Game.class);
+        }
+        else if (game.compareTo("four2win")==0) {
+            i = new Intent(this, de.mmbbs.four2win.Game.class);
+        }
+        if (i!=null) {
+            i.putExtra("start", turn).putExtra("gegner", gegner);
+            startActivity(i);
+        }
 
 	}
 

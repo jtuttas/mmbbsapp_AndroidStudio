@@ -8,7 +8,7 @@ public class Stone extends Object2D {
 
 	public Stone(int id, Context context) {
 		super(id, context);
-		// TODO Auto-generated constructor stub
+
 	}
 	
 
