@@ -5,8 +5,10 @@ import de.mmbbs.four2win.CustomDialogClass;
 import de.mmbbs.four2win.CustomDialogListener;
 import de.mmbbs.four2win.CustomDialogType;
 import de.mmbbs.gameserver.GameManagementActivity;
+import de.mmbbs.gameserver.GameStates;
 import de.mmbbs.gameserver.PlayGameListener;
 import de.mmbbs.gameserver.ui.Main;
+import de.mmbbs.tictactoetournament.game.*;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -51,9 +53,20 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
 	 
 	@Override
 	protected void onStop() {
+        Log.d(Main.TAG,"Four2Win Activity on Stop() Leinwandstate="+l.getState());
 		super.onStop();
 		l.onStop();
 		l.exit();
+        if (l.getState()!=Leinwand.OVER) {
+            JSONObject data = new JSONObject();
+            try {
+                data.put("xi", 0);
+                gc.play("close", data);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
         gc.quitPaaring();
         gegner=null;	}
 
@@ -95,7 +108,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
             gegner= (String) savedInstanceState.getSerializable("gegner");
             firstTurn= Boolean.parseBoolean((String) savedInstanceState.getSerializable("start"));
         }
-        Log.d(Main.TAG,"Game Four2Win onCreate() start="+firstTurn+" gegner="+gegner);
+        Log.d(Main.TAG, "Game Four2Win onCreate() start=" + firstTurn + " gegner=" + gegner);
         l=(Leinwand) this.findViewById(R.id.gui);
         l.setGameListener(this);
         l.reset(this.getWindowManager().getDefaultDisplay().getWidth(),this.getWindowManager().getDefaultDisplay().getHeight());
@@ -144,6 +157,8 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
 
 			@Override
 			public void onPositiveButton() {
+                gc.setState(GameStates.LOGGED_IN);
+                cd.dismiss();
 				onBackPressed();
 				
 			}
@@ -189,7 +204,9 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
 
     @Override
     public void won(Player currentPlayer) {
-        // TODO hier noch implementieren
+        gc.stats(1, 0, 1);
+        gc.addScore(l.getScore());
+        this.showDialog(currentPlayer.getName()+" "+this.getResources().getString(R.string.has_won));
     }
 
     @Override
@@ -208,8 +225,18 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
     public void updatePlay(JSONObject obj) {
         // TODO Hier muss der neue Zug verarbeitet werden
         if (obj.optString("command").compareTo("turn")==0) {
-            Log.d(Main.TAG," turn commando auf "+obj.optInt("xi"));
+            Log.d(Main.TAG, " turn commando auf " + obj.optInt("xi"));
             l.placeStone(obj.optInt("xi"));
+        }
+        else if (obj.optString("command").compareTo("timeout")==0) {
+            this.showDialog(getResources().getString(de.mmbbs.R.string.player_timedout));
+            gc.stats(1, 1, 0);
+            gc.addScore(l.getScore());
+        }
+        else if (obj.optString("command").compareTo("close")==0) {
+            this.showDialog(getResources().getString(de.mmbbs.R.string.player_closed));
+            gc.stats(1, 1, 0);
+            gc.addScore(l.getScore());
         }
     }
 

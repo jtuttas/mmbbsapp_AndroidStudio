@@ -38,6 +38,7 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 
 	private Context context;
     private int score;
+    private int storedXi=-1;
 
 
     public Leinwand(Context context) {
@@ -84,12 +85,14 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 	
 	public void exit() {
 		runner.stop();
+
 	}
 	
 	public void update() {
 		ticks++;
 		currentPlayer.tick();
 		if (gameBoard.ground(currentPlayer)) {
+            currentPlayer.reset();
 			if (gameBoard.won()==currentPlayer.getStoneColor()) {
 				this.setState(OVER);
 				Game.getHandler().post(new Runnable() {	
@@ -100,40 +103,41 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 					}
 				}); 
 			}
-            Log.d(Main.TAG," aktueller Spieler war "+currentPlayer.getName());
-			currentPlayer.reset();
-            if (state==PLACE) setState(WAIT);
-            else setState(PLACE);
-            Log.d(Main.TAG,"setzte SPiel state auf "+state);
-			if (player1==currentPlayer) {
-				score1--;
-				currentPlayer=player2;
-				Game.getHandler().post(new Runnable() {	
-					@Override
-					public void run() {
+            else {
+                if (state == PLACE) setState(WAIT);
+                else setState(PLACE);
+                if (player1 == currentPlayer) {
+                    score1--;
+                    currentPlayer = player2;
+                    Game.getHandler().post(new Runnable() {
+                        @Override
+                        public void run() {
 
-						if (listener!=null) listener.setScore(score1,score2);
-					}
-				}); 
-			}
-			else {
-				score2--;
-				currentPlayer=player1;
-				Game.getHandler().post(new Runnable() {	
-					@Override
-					public void run() {
+                            if (listener != null) listener.setScore(score1, score2);
+                        }
+                    });
+                } else {
+                    score2--;
+                    currentPlayer = player1;
+                    Game.getHandler().post(new Runnable() {
+                        @Override
+                        public void run() {
 
-						if (listener!=null) listener.setScore(score2,score2);
-					}
-				}); 
-			}
-            Log.d(Main.TAG," aktueller Spieler ist nun "+currentPlayer.getName());
+                            if (listener != null) listener.setScore(score2, score2);
+                        }
+                    });
+                }
+                if (storedXi != -1) this.placeStone(storedXi);
+            }
+            Log.d(Main.TAG, " aktueller Spieler ist nun " + currentPlayer.getName());
 		}
 
 
 	}
 
     private void setState(int s) {
+
+        Log.d(Main.TAG," setzte Leinwand state auf "+s);
         state=s;
     }
 
@@ -226,16 +230,22 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 
     public void placeStone(int xi) {
         Log.d(Main.TAG,"Gegner setzt Stein an Stell xi="+xi);
-        currentPlayer.getStone().setPosition(xi*gameBoard.elementWidth,(int)currentPlayer.getStone().getY());
-        if (gameBoard.getAboveElement(currentPlayer.getStone().getX() + currentPlayer.getStone().getWidth() / 2) == StoneColor.FREE) {
-            currentPlayer.setState(PlayerState.FALL);
-            final int xPos = (int) ((currentPlayer.getStone().getX() + currentPlayer.getStone().getWidth() / 2) / currentPlayer.getStone().getWidth()) * currentPlayer.getStone().getWidth();
-            currentPlayer.getStone().setPosition(xPos, (int) currentPlayer.getStone().getY());
-
-        } else {
-            currentPlayer.reset();
+        if (state==PLACE) {
+            // hier fällt der Stein wohl noch
+            storedXi=xi;
         }
+        else {
+            storedXi=-1;
+            currentPlayer.getStone().setPosition(xi * gameBoard.elementWidth, (int) currentPlayer.getStone().getY());
+            if (gameBoard.getAboveElement(currentPlayer.getStone().getX() + currentPlayer.getStone().getWidth() / 2) == StoneColor.FREE) {
+                currentPlayer.setState(PlayerState.FALL);
+                final int xPos = (int) ((currentPlayer.getStone().getX() + currentPlayer.getStone().getWidth() / 2) / currentPlayer.getStone().getWidth()) * currentPlayer.getStone().getWidth();
+                currentPlayer.getStone().setPosition(xPos, (int) currentPlayer.getStone().getY());
 
+            } else {
+                currentPlayer.reset();
+            }
+        }
     }
 
 
@@ -249,11 +259,18 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
         else {
             this.setState(WAIT);
             currentPlayer=player2;
-            player2.setStoneColor(StoneColor.RED,context);
+            player2.setStoneColor(StoneColor.RED, context);
             player1.setStoneColor(StoneColor.YELLOW,context);
         }
+        score1=42;
+        score2=42;
+
         Log.d(Main.TAG,"setStart() aktuller Spieler ist "+currentPlayer.getName()+" game state="+state);
         gameBoard.init();
         runner.start();
+    }
+
+    public int getState() {
+        return state;
     }
 }

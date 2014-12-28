@@ -160,6 +160,8 @@ public class UserListFragment extends Fragment implements OnItemClickListener, T
 	public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
 		final User u = adapter.getItem(pos);
 		Log.d(Main.TAG,"Geklick auf "+u.getName());
+        GameManagementActivity.cdd=null;
+
 		requestPlayer(u);
 		
 	}

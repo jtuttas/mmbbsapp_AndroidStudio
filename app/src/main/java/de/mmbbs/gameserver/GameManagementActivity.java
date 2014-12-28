@@ -25,7 +25,7 @@ public abstract class GameManagementActivity extends Activity implements
 
 	protected Handler handler;
 	protected static GameServerApplication gc;
-	private static CustomDialogClass cdd;
+	public static CustomDialogClass cdd;
 	public GameManagementActivity instance;
 	private int idDialog;
 

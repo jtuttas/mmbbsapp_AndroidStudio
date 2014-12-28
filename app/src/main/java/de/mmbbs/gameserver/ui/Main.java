@@ -242,7 +242,7 @@ public class Main extends Activity implements GameServerListener,GameUserListene
 
 	@Override
 	public void connected() {
-		dialog.dismiss();
+		if (dialog!=null && dialog.isShowing()) dialog.dismiss();
 	    
 		String user = pref.getString("user", null);
 	    String pw = pref.getString("password", null);
