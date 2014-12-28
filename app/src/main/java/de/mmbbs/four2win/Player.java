@@ -18,6 +18,7 @@ public class Player {
 	PlayerState state;
 	Acceleration a;
     private int score;
+    private  int ticker;
     private int stoneWidth;
 
     public Player (String n, StoneColor c, Context context) {
@@ -30,8 +31,22 @@ public class Player {
 			stone = new Stone(R.drawable.yellow, context);
 		}
 		state=PlayerState.WAIT;
+        ticker=100;
 		a = new Acceleration(0, 10, 20);
 	}
+
+    public void decTicker() {
+        if (state!=PlayerState.FALL) ticker--;
+    }
+
+    public int getTicker() {
+        return ticker;
+    }
+
+    public void resetTicker() {
+        ticker=500;
+    }
+
 
 	public void paint(Canvas c,Paint p) {
 		stone.paint(c, p);

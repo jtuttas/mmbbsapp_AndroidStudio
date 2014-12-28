@@ -325,6 +325,7 @@
                   <string name="highscore">Highscores</string>
       <string name="player_disconnected">Lost connection to your partner! You have won!"</string>
       <string name="player_timedout">Your partner is timed out, you have won !</string>
+      <string name="me_timedout">You are timed out!</string>
       <string name="player_closed">Your partner closed the game, you have won !</string>
       <string name="has_won"> has WON!</string>
       <string name="penalty">DRAWN !</string>

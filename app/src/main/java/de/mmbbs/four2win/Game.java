@@ -43,6 +43,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
 	//private SharedPreferences pref;
     private String gegner;
     private  boolean firstTurn;
+    private boolean meIsLeft;
 
     @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,7 +54,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
 	 
 	@Override
 	protected void onStop() {
-        Log.d(Main.TAG,"Four2Win Activity on Stop() Leinwandstate="+l.getState());
+        Log.d(Main.TAG, "Four2Win Activity on Stop() Leinwandstate=" + l.getState());
 		super.onStop();
 		l.exit();
         if (l.getState()!=Leinwand.OVER) {
@@ -117,10 +118,12 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
         l.player1.setName(gc.getUser());
         l.player2.setName(gegner);
         if (firstTurn) {
+            meIsLeft=true;
             this.setLeftPlayer(l.player1);
             this.setRightPlayer(l.player2);
         }
         else {
+            meIsLeft=false;
             this.setLeftPlayer(l.player2);
             this.setRightPlayer(l.player1);
 
@@ -192,19 +195,33 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
 
 
     @Override
-    public void setScore(int left, int right) {
-        ((TextView) this.findViewById(R.id.four2winTextViewScoreLeft)).setText(Integer.toString(left));
-        ((TextView) this.findViewById(R.id.four2winTextViewScoreRight)).setText(Integer.toString(right));
+    public void setScore(int me, int opposit) {
+        if (meIsLeft) {
+            ((TextView) this.findViewById(R.id.four2winTextViewScoreLeft)).setText(Integer.toString(me));
+            ((TextView) this.findViewById(R.id.four2winTextViewScoreRight)).setText(Integer.toString(opposit));
+        }
+        else {
+            ((TextView) this.findViewById(R.id.four2winTextViewScoreLeft)).setText(Integer.toString(opposit));
+            ((TextView) this.findViewById(R.id.four2winTextViewScoreRight)).setText(Integer.toString(me));
+
+        }
     }
 
 
 
     @Override
-    public void setProgessBar(int left, int right) {
+    public void setProgessBar(int me, int opposit) {
         ProgressBar pbl = (ProgressBar) this.findViewById(R.id.four2winProgressBarleft);
         ProgressBar pbr = (ProgressBar) this.findViewById(R.id.four2winProgressBarright);
-        pbl.setProgress(left);
-        pbr.setProgress(right);
+        if (meIsLeft) {
+            pbl.setProgress(me);
+            pbr.setProgress(opposit);
+        }
+        else {
+            pbl.setProgress(opposit);
+            pbr.setProgress(me);
+
+        }
     }
 
 
@@ -218,6 +235,20 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
         else {
             gc.stats(1, 0, 1);
             this.showDialog(currentPlayer.getName() + " " + this.getResources().getString(R.string.has_won));
+        }
+    }
+
+    @Override
+    public void timeout(Player currentPlayer,Player me) {
+        gc.stats(1, 0, 1);
+        this.showDialog(this.getResources().getString(R.string.me_timedout));
+        JSONObject data = new JSONObject();
+        try {
+            data.put("xi", -1);
+            gc.play("timeout",data);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
@@ -241,7 +272,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
             l.placeStone(obj.optInt("xi"));
         }
         else if (obj.optString("command").compareTo("timeout")==0) {
-            this.showDialog(getResources().getString(de.mmbbs.R.string.player_timedout));
+            this.showDialog(getResources().getString(de.mmbbs.R.string.player_timedout)+" Your Score is "+l.player1.getScore());
             gc.stats(1, 1, 0);
             gc.addScore(l.player1.getScore());
             l.setState(Leinwand.OVER);
