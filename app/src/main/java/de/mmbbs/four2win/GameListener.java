@@ -6,8 +6,7 @@ public interface GameListener {
 	
 	public void setProgessBar(int left,int right);
 
-
-    void won(Player currentPlayer);
+    void won(Player currentPlayer,Player me);
 
     void turn(int xi);
 }

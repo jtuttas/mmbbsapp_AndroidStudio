@@ -17,6 +17,7 @@ public class Player {
 	private int orgX,orgY;
 	PlayerState state;
 	Acceleration a;
+    private int score;
     private int stoneWidth;
 
     public Player (String n, StoneColor c, Context context) {
@@ -118,5 +119,16 @@ public class Player {
 		
 	}
 
-	
+
+    public void decScore() {
+        score--;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int i) {
+        score=i;
+    }
 }

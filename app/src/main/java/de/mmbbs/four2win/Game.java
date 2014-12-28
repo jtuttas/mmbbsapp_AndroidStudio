@@ -55,7 +55,6 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
 	protected void onStop() {
         Log.d(Main.TAG,"Four2Win Activity on Stop() Leinwandstate="+l.getState());
 		super.onStop();
-		l.onStop();
 		l.exit();
         if (l.getState()!=Leinwand.OVER) {
             JSONObject data = new JSONObject();
@@ -66,9 +65,12 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            gc.stats(1,0,1);
+            l.setState(Leinwand.OVER);
         }
         gc.quitPaaring();
-        gegner=null;	}
+        gegner=null;
+    }
 
     @Override
     public void onLogin() {
@@ -132,8 +134,12 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
         gc = (de.mmbbs.gameserver.GameServerApplication) getApplication();
         gc.setGameCallbacks(this, handler);
 		super.onStart();
-		Log.d(Main.TAG," **** Game onStart()");
+		Log.d(Main.TAG," **** Game onStart() Leinwand state="+l.getState());
 
+        if (l.getState()==Leinwand.OVER) {
+            // Spiel kommt wieder in den Fordergrund
+            this.finish();
+        }
 //		String p1=null,p2=null;
 //		pref = PreferenceManager.getDefaultSharedPreferences(this);
 //		p1 = pref.getString("player1", "Player1");
@@ -203,10 +209,16 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
 
 
     @Override
-    public void won(Player currentPlayer) {
-        gc.stats(1, 0, 1);
-        gc.addScore(l.getScore());
-        this.showDialog(currentPlayer.getName()+" "+this.getResources().getString(R.string.has_won));
+    public void won(Player currentPlayer,Player me) {
+        if (currentPlayer==me) {
+            gc.stats(1, 1, 0);
+            gc.addScore(currentPlayer.getScore());
+            this.showDialog(currentPlayer.getName() + " " + this.getResources().getString(R.string.has_won) + " Your score is " + currentPlayer.getScore());
+        }
+        else {
+            gc.stats(1, 0, 1);
+            this.showDialog(currentPlayer.getName() + " " + this.getResources().getString(R.string.has_won));
+        }
     }
 
     @Override
@@ -231,12 +243,14 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
         else if (obj.optString("command").compareTo("timeout")==0) {
             this.showDialog(getResources().getString(de.mmbbs.R.string.player_timedout));
             gc.stats(1, 1, 0);
-            gc.addScore(l.getScore());
+            gc.addScore(l.player1.getScore());
+            l.setState(Leinwand.OVER);
         }
         else if (obj.optString("command").compareTo("close")==0) {
             this.showDialog(getResources().getString(de.mmbbs.R.string.player_closed));
             gc.stats(1, 1, 0);
-            gc.addScore(l.getScore());
+            gc.addScore(l.player1.getScore());
+            l.setState(Leinwand.OVER);
         }
     }
 
@@ -275,8 +289,8 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
     public void updateDisconnect() {
         Log.d(Main.TAG,"updateDiscopnnect() Game state="+gc.getState());
         this.showDialog(getResources().getString(de.mmbbs.R.string.player_disconnected));
-        gc.stats(1, 1, 0);
-        gc.addScore(l.getScore());
+        //gc.stats(1, 1, 0);
+        //gc.addScore(l.player1.getScore());
 
     }
 }
