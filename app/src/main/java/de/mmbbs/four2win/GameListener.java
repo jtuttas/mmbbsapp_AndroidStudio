@@ -10,5 +10,7 @@ public interface GameListener {
 
     void timeout(Player currentPlayer,Player me);
 
+    void drawn();
+
     void turn(int xi);
 }

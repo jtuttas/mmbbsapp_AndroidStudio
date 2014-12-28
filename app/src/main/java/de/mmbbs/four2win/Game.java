@@ -253,6 +253,12 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
     }
 
     @Override
+    public void drawn() {
+        gc.stats(1,0,0);
+        this.showDialog(this.getResources().getString(R.string.penalty));
+    }
+
+    @Override
     public void turn(int xi) {
         JSONObject data = new JSONObject();
         try {

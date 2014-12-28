@@ -122,6 +122,16 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 					}
 				}); 
 			}
+            else if (gameBoard.drawn()) {
+                this.setState(OVER);
+                Game.getHandler().post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if (listener!=null) listener.drawn();
+                    }
+                });
+            }
             else {
                 if (state == PLACE) setState(WAIT);
                 else setState(PLACE);

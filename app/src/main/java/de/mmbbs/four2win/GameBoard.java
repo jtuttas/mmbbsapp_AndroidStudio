@@ -42,6 +42,17 @@ public class GameBoard {
 		int ix=(int)((x+xPos)/elementWidth);
 		return board[ix][0];
 	}
+
+    public boolean drawn() {
+        int numStones=0;
+        for (int x=0;x<7;x++) {
+            for (int y=0;y<6;y++) {
+                if (board[x][y]!=StoneColor.FREE) numStones++;
+            }
+        }
+        if (numStones==42) return true;
+        return false;
+    }
 	
 	public StoneColor won() {
 		for (int x=0;x<7;x++) {
