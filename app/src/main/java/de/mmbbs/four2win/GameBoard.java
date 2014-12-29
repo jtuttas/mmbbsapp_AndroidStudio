@@ -10,7 +10,7 @@ import de.mmbbs.gameserver.ui.Main;
 
 public class GameBoard {
 	private StoneColor[][]board=new StoneColor[7][6];
-	private Object2D emptyElement,redElement,yellowElement;
+	private Object2D emptyElement,redElement,yellowElement,emptyTop;
 	int width,height;
 	int elementWidth,elementHeight;
 	private int xPos;
@@ -21,6 +21,7 @@ public class GameBoard {
 		emptyElement=new Object2D(R.drawable.empty, context);
 		redElement=new Object2D(R.drawable.emptyred, context);
 		yellowElement=new Object2D(R.drawable.emptyyellow, context);
+        emptyTop=new Object2D(R.drawable.emptytop, context);
 	}
 	
 	public void init() {
@@ -40,6 +41,7 @@ public class GameBoard {
 	public StoneColor getAboveElement(float x) {
 		Log.d(Main.TAG," x="+x+" xPos="+xPos+"  elementWidth="+elementWidth);
 		int ix=(int)((x+xPos)/elementWidth);
+        if (ix>6)return board[6][0];
 		return board[ix][0];
 	}
 
@@ -121,6 +123,10 @@ public class GameBoard {
 	}
 
 	public void paint(Canvas c,Paint p) {
+        for (int x=0;x<7;x++) {
+            emptyTop.setPosition(xPos+x*elementWidth,yPos-elementHeight/2);
+            emptyTop.paint(c,p);
+        }
 		for (int x=0;x<7;x++) {
 			for (int y=0;y<6;y++) {
 				if (board[x][y]==StoneColor.FREE) {
@@ -151,6 +157,7 @@ public class GameBoard {
 		emptyElement.resize(elementWidth, elementHeight);
 		redElement.resize(elementWidth, elementHeight);
 		yellowElement.resize(elementWidth, elementHeight);
+        emptyTop.resize(elementWidth,elementHeight/2);
 		
 	}
 

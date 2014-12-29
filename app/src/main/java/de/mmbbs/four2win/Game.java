@@ -134,6 +134,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
 
 	@Override
 	protected void onStart() {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         gc = (de.mmbbs.gameserver.GameServerApplication) getApplication();
         gc.setGameCallbacks(this, handler);
 		super.onStart();

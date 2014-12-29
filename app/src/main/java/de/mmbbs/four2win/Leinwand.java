@@ -178,7 +178,7 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 		mTouchX = (int)event.getX();
 		mTouchY = (int)event.getY();
 		//Log.d(Main.TAG," x="+mTouchX+" y="+mTouchY+" this.width="+this.getWidth());
-
+        if (mTouchX>gameBoard.width-currentPlayer.getStone().getWidth()/2) mTouchX=gameBoard.width-currentPlayer.getStone().getWidth()/2;
 		if (state==PLACE) {
             if (event.getAction() == android.view.MotionEvent.ACTION_DOWN) {
                 //Log.d(Main.TAG," ACTION_DOWN x="+mTouchX+" y="+mTouchY);
