@@ -11,6 +11,8 @@ public class Object2D {
 
 	protected int x=0;
 	protected int y=0;
+    protected int yoffset=0;
+    protected int xoffset=0;
 	protected Bitmap bitmap;
 	protected Rect rect;
 	public float getX;
@@ -30,9 +32,16 @@ public class Object2D {
 		y=yPos;
 		rect.set(x, y, x+bitmap.getWidth(), y+bitmap.getHeight());
 	}
+
+
+    public void setPositionOffset(int xo, int yo) {
+        xoffset=xo;
+        yoffset=yo;
+
+    }
 	
 	public void paint(Canvas c,Paint p) {
-		c.drawBitmap(bitmap, x, y, p);
+		c.drawBitmap(bitmap, x+xoffset, y+yoffset, p);
 	}
 	
 	

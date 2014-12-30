@@ -10,6 +10,6 @@ public class Stone extends Object2D {
 		super(id, context);
 
 	}
-	
+
 
 }

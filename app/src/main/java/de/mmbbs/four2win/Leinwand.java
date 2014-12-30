@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -39,6 +40,9 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 	private Context context;
     private int score;
     private int storedXi=-1;
+    private float lastTouchX=-1;
+    private int moveCounter;
+    private Vibrator vibrator;
 
 
     public Leinwand(Context context) {
@@ -85,7 +89,7 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
                 @Override
                 public void run() {
                     if (listener != null)
-                        listener.timeout(currentPlayer,player1);
+                        listener.timeout(currentPlayer, player1);
                 }
             });
             setState(Leinwand.OVER);
@@ -112,15 +116,17 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
         }
 		if (gameBoard.ground(currentPlayer)) {
             currentPlayer.reset();
+            vibrator.vibrate(150);
+            moveCounter=gameBoard.elementWidth/2;
 			if (gameBoard.won()==currentPlayer.getStoneColor()) {
 				this.setState(OVER);
-				Game.getHandler().post(new Runnable() {	
-					@Override
-					public void run() {
+				Game.getHandler().post(new Runnable() {
+                    @Override
+                    public void run() {
 
-						if (listener!=null) listener.won(currentPlayer,player1);
-					}
-				}); 
+                        if (listener != null) listener.won(currentPlayer, player1);
+                    }
+                });
 			}
             else if (gameBoard.drawn()) {
                 this.setState(OVER);
@@ -177,6 +183,29 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 	public boolean onTouch(View v, MotionEvent event) {
 		mTouchX = (int)event.getX();
 		mTouchY = (int)event.getY();
+        int yOffset=0;
+        if (lastTouchX!=-1) {
+            //Log.d(Main.TAG," moveCounter="+moveCounter+" elementWindth="+gameBoard.elementWidth);
+            // Bewegung nach rechts
+            if (mTouchX > lastTouchX) {
+                moveCounter+=(mTouchX-lastTouchX);
+            }
+            // Bewegung nach links
+            else if (mTouchX < lastTouchX) {
+                moveCounter-=(lastTouchX-mTouchX);
+            }
+            if (moveCounter<=0 || moveCounter>=gameBoard.elementWidth) {
+                Log.d(Main.TAG," Hubbel! movecounter="+moveCounter+ " elementwidth="+gameBoard.elementWidth);
+                vibrator.vibrate(75);
+                currentPlayer.getStone().setPositionOffset(0,-10);
+                if (moveCounter<=0) moveCounter+=gameBoard.elementWidth;
+                else if (moveCounter>=gameBoard.elementWidth) moveCounter-=gameBoard.elementWidth;
+            }
+            else {
+                currentPlayer.getStone().setPositionOffset(0,0);
+            }
+        }
+        lastTouchX=mTouchX;
 		//Log.d(Main.TAG," x="+mTouchX+" y="+mTouchY+" this.width="+this.getWidth());
         if (mTouchX>gameBoard.width-currentPlayer.getStone().getWidth()/2) mTouchX=gameBoard.width-currentPlayer.getStone().getWidth()/2;
 		if (state==PLACE) {
@@ -189,6 +218,7 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 
             } else if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
                 //Log.d(Main.TAG," ACTION_UP x="+mTouchX+" y="+mTouchY);
+                lastTouchX=-1;
                 if (currentPlayer.getState() == PlayerState.MOVE) {
                     if (gameBoard.getAboveElement(currentPlayer.getStone().getX() + currentPlayer.getStone().getWidth() / 2) == StoneColor.FREE) {
                         currentPlayer.setState(PlayerState.FALL);
@@ -216,11 +246,13 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 	}
 
 	public void reset() {
-		this.reset(this.getWidth(),this.getHeight());
+
+        this.reset(this.getWidth(),this.getHeight());
 	}
 
 	public void reset(int width, int height) {
 		if (width!=0) {
+            lastTouchX=-1;
 			player1.setWidth(width/7);
 			player2.setWidth(width/7);
 			player1.initPostition(0,0);
@@ -228,6 +260,7 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 			Log.d(Main.TAG," reset() width="+width+" player1width="+player1.getStone().getWidth());
 			gameBoard.setDimmension(player1.getStone().getWidth()*7,player1.getStone().getWidth()*6);
 			gameBoard.setPosition(0,player1.getStone().getHeight());
+            moveCounter=gameBoard.elementWidth/2;
 		}
 	}
 
@@ -295,6 +328,7 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 
         Log.d(Main.TAG,"setStart() aktuller Spieler ist "+currentPlayer.getName()+" game state="+state);
         gameBoard.init();
+        vibrator = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
         runner.start();
     }
 

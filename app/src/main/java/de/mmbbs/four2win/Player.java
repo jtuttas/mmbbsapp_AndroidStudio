@@ -101,7 +101,7 @@ public class Player {
 	}
 	
 	public void movePostition(float mTouchX) {
-		Log.d(Main.TAG," touchX="+touchX+" mtocuhX="+mTouchX);
+		//Log.d(Main.TAG," touchX="+touchX+" mtocuhX="+mTouchX);
 		stone.setPosition((int)(stone.getX()-(touchX-mTouchX)), (int)stone.getY());
 		touchX=mTouchX;
 	}
