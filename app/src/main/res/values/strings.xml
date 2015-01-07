@@ -25,12 +25,12 @@
     <string name="organisation">Organisation</string>
     <string name="lehrersuche">Lehrersuche</string>
     <string name="tv_textview">TextView</string>
-    <string name="about_txt">MMBBS App V1.6 \n (c) 2011-2014\n developed by\nDr. Jörg Tuttas\nand members of the WPK\nSoftwareentwicklung\nfür\nmobile Endgeräte</string>
+    <string name="about_txt">MMBBS App V1.7 \n (c) 2011-2015\n developed by\nDr. Jörg Tuttas\nand members of the WPK\nSoftwareentwicklung\nfür\nmobile Endgeräte</string>
     <string name="btn_ok">OK</string>
     <string name="about_add">Liebe Schülerinnen und Schüler, sicherlich fragen Sie sich, warum hier Werbung erscheint? \n\nNun, die Einnahmen aus der Werbung werden im kommenden Jahr der IT-Fete gespendet. Also bitte hin und wieder mal auf die Werbung klicken, dass ist wie eine kleine Spende für die IT-Fete!</string>
     <string name="ads_text">Heute schon auf die Werbung geklickt?</string>
-    <string name="new_version_txt">- Bugfixes \n\n Beschwerden und Reklamation bitte via EMail an tuttas@mmbbs.de</string>
-    <string name="version">V1.6</string>
+    <string name="new_version_txt">- mit 4Gewinnt Spiel\n- Bugfixes \n\n Beschwerden und Reklamation bitte via EMail an tuttas@mmbbs.de</string>
+    <string name="version">V1.7</string>
     <string-array name="stundenplanliste">
         
         <item>Tabelle</item>
