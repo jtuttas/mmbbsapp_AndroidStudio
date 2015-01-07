@@ -228,6 +228,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
 
     @Override
     public void won(Player currentPlayer,Player me) {
+        GameManagementActivity.soundPlayer.play(SoundPlayer.Sounds.GAMEOVER);
         if (currentPlayer==me) {
             gc.stats(1, 1, 0);
             gc.addScore(currentPlayer.getScore());
@@ -242,6 +243,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
     @Override
     public void timeout(Player currentPlayer,Player me) {
         gc.stats(1, 0, 1);
+        GameManagementActivity.soundPlayer.play(SoundPlayer.Sounds.GAMEOVER);
         this.showDialog(this.getResources().getString(R.string.me_timedout));
         JSONObject data = new JSONObject();
         try {
@@ -256,6 +258,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
     @Override
     public void drawn() {
         gc.stats(1,0,0);
+        GameManagementActivity.soundPlayer.play(SoundPlayer.Sounds.GAMEOVER);
         this.showDialog(this.getResources().getString(R.string.penalty));
     }
 
@@ -279,12 +282,14 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
             l.placeStone(obj.optInt("xi"));
         }
         else if (obj.optString("command").compareTo("timeout")==0) {
+            GameManagementActivity.soundPlayer.play(SoundPlayer.Sounds.GAMEOVER);
             this.showDialog(getResources().getString(de.mmbbs.R.string.player_timedout)+" Your Score is "+l.player1.getScore());
             gc.stats(1, 1, 0);
             gc.addScore(l.player1.getScore());
             l.setState(Leinwand.OVER);
         }
         else if (obj.optString("command").compareTo("close")==0) {
+            GameManagementActivity.soundPlayer.play(SoundPlayer.Sounds.GAMEOVER);
             this.showDialog(getResources().getString(de.mmbbs.R.string.player_closed));
             gc.stats(1, 1, 0);
             gc.addScore(l.player1.getScore());

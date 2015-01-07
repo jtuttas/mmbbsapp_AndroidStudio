@@ -689,8 +689,11 @@ containing a value of this type.
         public static final int user_menu=0x7f0b0005;
     }
     public static final class raw {
-        public static final int gtm_analytics=0x7f050000;
-        public static final int pause=0x7f050001;
+        public static final int alert=0x7f050000;
+        public static final int bounce=0x7f050001;
+        public static final int gameover=0x7f050002;
+        public static final int gtm_analytics=0x7f050003;
+        public static final int pause=0x7f050004;
     }
     public static final class string {
         public static final int Hallo=0x7f090000;

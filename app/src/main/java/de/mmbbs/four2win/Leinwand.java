@@ -1,6 +1,7 @@
 package de.mmbbs.four2win;
 
 import de.mmbbs.four2win.Game;
+import de.mmbbs.gameserver.GameManagementActivity;
 import de.mmbbs.gameserver.ui.Main;
 
 import android.content.Context;
@@ -116,10 +117,11 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
         }
 		if (gameBoard.ground(currentPlayer)) {
             currentPlayer.reset();
-            vibrator.vibrate(150);
+            //vibrator.vibrate(150);
             moveCounter=gameBoard.elementWidth/2;
 			if (gameBoard.won()==currentPlayer.getStoneColor()) {
 				this.setState(OVER);
+                GameManagementActivity.soundPlayer.play(SoundPlayer.Sounds.GAMEOVER);
 				Game.getHandler().post(new Runnable() {
                     @Override
                     public void run() {
@@ -129,6 +131,7 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
                 });
 			}
             else if (gameBoard.drawn()) {
+                GameManagementActivity.soundPlayer.play(SoundPlayer.Sounds.GAMEOVER);
                 this.setState(OVER);
                 Game.getHandler().post(new Runnable() {
                     @Override
@@ -142,6 +145,7 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
                 if (state == PLACE) setState(WAIT);
                 else setState(PLACE);
                 currentPlayer.decScore();
+                GameManagementActivity.soundPlayer.play(SoundPlayer.Sounds.BOUNCE);
                 if (player1 == currentPlayer) {
                     currentPlayer = player2;
                     player2.resetTicker();
@@ -181,34 +185,35 @@ public class Leinwand extends SurfaceView implements OnTouchListener  {
 	}
 
 	public boolean onTouch(View v, MotionEvent event) {
-		mTouchX = (int)event.getX();
-		mTouchY = (int)event.getY();
-        int yOffset=0;
-        if (lastTouchX!=-1) {
-            //Log.d(Main.TAG," moveCounter="+moveCounter+" elementWindth="+gameBoard.elementWidth);
-            // Bewegung nach rechts
-            if (mTouchX > lastTouchX) {
-                moveCounter+=(mTouchX-lastTouchX);
-            }
-            // Bewegung nach links
-            else if (mTouchX < lastTouchX) {
-                moveCounter-=(lastTouchX-mTouchX);
-            }
-            if (moveCounter<=0 || moveCounter>=gameBoard.elementWidth) {
-                Log.d(Main.TAG," Hubbel! movecounter="+moveCounter+ " elementwidth="+gameBoard.elementWidth);
-                vibrator.vibrate(75);
-                currentPlayer.getStone().setPositionOffset(0,-10);
-                if (moveCounter<=0) moveCounter+=gameBoard.elementWidth;
-                else if (moveCounter>=gameBoard.elementWidth) moveCounter-=gameBoard.elementWidth;
-            }
-            else {
-                currentPlayer.getStone().setPositionOffset(0,0);
-            }
-        }
-        lastTouchX=mTouchX;
-		//Log.d(Main.TAG," x="+mTouchX+" y="+mTouchY+" this.width="+this.getWidth());
-        if (mTouchX>gameBoard.width-currentPlayer.getStone().getWidth()/2) mTouchX=gameBoard.width-currentPlayer.getStone().getWidth()/2;
+
 		if (state==PLACE) {
+            mTouchX = (int)event.getX();
+            mTouchY = (int)event.getY();
+            int yOffset=0;
+            if (lastTouchX!=-1) {
+                //Log.d(Main.TAG," moveCounter="+moveCounter+" elementWindth="+gameBoard.elementWidth);
+                // Bewegung nach rechts
+                if (mTouchX > lastTouchX) {
+                    moveCounter+=(mTouchX-lastTouchX);
+                }
+                // Bewegung nach links
+                else if (mTouchX < lastTouchX) {
+                    moveCounter-=(lastTouchX-mTouchX);
+                }
+                if (moveCounter<=0 || moveCounter>=gameBoard.elementWidth) {
+                    Log.d(Main.TAG," Hubbel! movecounter="+moveCounter+ " elementwidth="+gameBoard.elementWidth);
+                    vibrator.vibrate(75);
+                    currentPlayer.getStone().setPositionOffset(0,-10);
+                    if (moveCounter<=0) moveCounter+=gameBoard.elementWidth;
+                    else if (moveCounter>=gameBoard.elementWidth) moveCounter-=gameBoard.elementWidth;
+                }
+                else {
+                    currentPlayer.getStone().setPositionOffset(0,0);
+                }
+            }
+            lastTouchX=mTouchX;
+            //Log.d(Main.TAG," x="+mTouchX+" y="+mTouchY+" this.width="+this.getWidth());
+            if (mTouchX>gameBoard.width-currentPlayer.getStone().getWidth()/2) mTouchX=gameBoard.width-currentPlayer.getStone().getWidth()/2;
             if (event.getAction() == android.view.MotionEvent.ACTION_DOWN) {
                 //Log.d(Main.TAG," ACTION_DOWN x="+mTouchX+" y="+mTouchY);
                 if (currentPlayer.getState() == PlayerState.WAIT) {

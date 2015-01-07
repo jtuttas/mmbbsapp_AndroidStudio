@@ -3,6 +3,7 @@ package de.mmbbs.gameserver.ui;
 import java.util.List;
 
 import de.mmbbs.R;
+import de.mmbbs.four2win.SoundPlayer;
 import de.mmbbs.gameserver.GameManagementActivity;
 import de.mmbbs.gameserver.GameServerApplication;
 import de.mmbbs.gameserver.GameUserListener;
@@ -161,7 +162,7 @@ public class UserListFragment extends Fragment implements OnItemClickListener, T
 		final User u = adapter.getItem(pos);
 		Log.d(Main.TAG,"Geklick auf "+u.getName());
         GameManagementActivity.cdd=null;
-
+        GameManagementActivity.soundPlayer.play(SoundPlayer.Sounds.REQUEST);
 		requestPlayer(u);
 		
 	}

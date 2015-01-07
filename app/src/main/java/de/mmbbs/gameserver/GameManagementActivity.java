@@ -3,6 +3,7 @@ package de.mmbbs.gameserver;
 import org.json.JSONObject;
 
 import de.mmbbs.R;
+import de.mmbbs.four2win.SoundPlayer;
 import de.mmbbs.gameserver.ui.CustomDialogClass;
 import de.mmbbs.gameserver.ui.CustomDialogListener;
 import de.mmbbs.gameserver.ui.CustomDialogType;
@@ -28,6 +29,7 @@ public abstract class GameManagementActivity extends Activity implements
 	public static CustomDialogClass cdd;
 	public GameManagementActivity instance;
 	private int idDialog;
+    public static SoundPlayer soundPlayer;
 
 	public CustomDialogClass getCustomDialog() {
 		if (cdd == null) {
@@ -81,6 +83,7 @@ public abstract class GameManagementActivity extends Activity implements
 	protected void onStart() {
 		Log.d(Main.TAG, "onStart() GameManagement Activity");
 		super.onStart();
+        soundPlayer=new SoundPlayer(this);
 	}
 
 	@Override
@@ -145,6 +148,7 @@ public abstract class GameManagementActivity extends Activity implements
 				+ obj.optString("command"));
 		if (obj.optString("command").compareTo("request") == 0) {
             cdd=null;
+            soundPlayer.play(SoundPlayer.Sounds.REQUEST);
 			this.showRequestDialog(obj.optString("from_player"),obj.optString("game"));
 
 		} else if (obj.optString("command").compareTo("request_acknowledged") == 0) {
