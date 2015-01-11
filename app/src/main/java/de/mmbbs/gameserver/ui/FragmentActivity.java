@@ -106,37 +106,20 @@ public class FragmentActivity extends GameManagementActivity {
 			
 		}
 
-		@Override
-		public boolean onCreateOptionsMenu(Menu menu) {
-			getMenuInflater().inflate(R.menu.user_menu, menu);
-			return super.onCreateOptionsMenu(menu);
-		}
-		@Override
-		public boolean onOptionsItemSelected(MenuItem item) {
-			switch (item.getItemId()) {
-			case R.id.item_friends_only:
-				if (item.isChecked()) {
-					Log.d(Main.TAG," Friends olny is checked ");
-					item.setChecked(false);
-					
-					((UserListFragment) userListFragment).adapter.setFriendsOnly(false);
-					
-					((UserListFragment) userListFragment).adapter.getFilter().filter(((EditText) userListFragment.getView().findViewById(R.id.editText_user_filter)).getText());
-				}
-				else {
-					Log.d(Main.TAG," Friends olny is unchecked ");
-					item.setChecked(true);
-					((UserListFragment) userListFragment).adapter.setFriendsOnly(true);
-					((UserListFragment) userListFragment).adapter.getFilter().filter(((EditText) userListFragment.getView().findViewById(R.id.editText_user_filter)).getText());
-					
-				}
-				break;
-			}
-			return super.onOptionsItemSelected(item);
-		}
-		
-		
-		@Override
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (userListFragment.isVisible()) userListFragment.onCreateOptionsMenu(menu,this.getMenuInflater());
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (userListFragment.isVisible())  userListFragment.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
 		public void onLogin() {
 			Log.d(Main.TAG," --------> Fragment Activity onLogin()");
 			Bundle extras = getIntent().getExtras();

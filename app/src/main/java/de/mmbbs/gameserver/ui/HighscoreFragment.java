@@ -69,7 +69,8 @@ public class HighscoreFragment extends Fragment implements GameHighscoreListener
 			Log.d(Main.TAG,"update Highscores:"+i);
 			TableRow tableRow = new TableRow(getActivity());
 			tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-			if (rows.optJSONObject(i).optString("Name").compareTo(gc.getUser())==0) {
+			//Log.d(Main.TAG," Vergeleicht ("+rows.optJSONObject(i).optString("Name")+") mit ("+gc.getUser()+") = "+rows.optJSONObject(i).optString("Name").equalsIgnoreCase(gc.getUser()));
+            if (rows.optJSONObject(i).optString("Name").equalsIgnoreCase(gc.getUser())) {
 				tableRow.setBackgroundColor(getResources().getColor(R.color.lineme));
 				foundme=true;
 			}

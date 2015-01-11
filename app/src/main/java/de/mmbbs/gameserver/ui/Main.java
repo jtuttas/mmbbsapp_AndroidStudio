@@ -61,10 +61,21 @@ public class Main extends Activity implements GameServerListener,GameUserListene
 		FontOverride.setDefaultFont(this, "SANS_SERIF", "fonts/Isserley-Bold.otf");
 		dbm = new DBManager(this, "friends.db", null, 1);
         Bundle extras = getIntent().getExtras();
-        GAME=extras.getString("gamename");
-        Log.d(Main.TAG," Main.oncreate() GameName="+GAME);
         ImageView iv = (ImageView) this.findViewById(R.id.imageViewSplashScreen);
-        iv.setImageResource(extras.getInt("splashImage"));
+        if (extras!=null) {
+            GAME = extras.getString("gamename");
+            iv.setImageResource(extras.getInt("splashImage"));
+            Editor e = pref.edit();
+            e.putString("gamename",GAME);
+            e.putInt("splashImage",extras.getInt("splashImage"));
+            e.commit();
+        }
+        else {
+            GAME = pref.getString("gamename","tttmmbbs");
+            iv.setImageResource(pref.getInt("splashImage",R.drawable.tic_tac_toe_titel));
+        }
+        Log.d(Main.TAG," Main.oncreate() GameName="+GAME);
+
     }
 	
 	

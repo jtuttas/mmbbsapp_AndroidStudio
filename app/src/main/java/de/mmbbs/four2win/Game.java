@@ -276,7 +276,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
 
     @Override
     public void updatePlay(JSONObject obj) {
-        // TODO Hier muss der neue Zug verarbeitet werden
+
         if (obj.optString("command").compareTo("turn")==0) {
             Log.d(Main.TAG, " turn commando auf " + obj.optInt("xi"));
             l.placeStone(obj.optInt("xi"));

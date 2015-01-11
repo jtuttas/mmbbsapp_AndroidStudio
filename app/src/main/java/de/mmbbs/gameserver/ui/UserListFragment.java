@@ -19,6 +19,8 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -185,7 +187,37 @@ public class UserListFragment extends Fragment implements OnItemClickListener, T
 		
 	}
 
-	@Override
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.user_menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(Main.TAG," onOPtionImtemSelected in UserListGFragment ");
+        switch (item.getItemId()) {
+            case R.id.item_friends_only:
+                if (item.isChecked()) {
+                    Log.d(Main.TAG," Friends olny is checked ");
+                    item.setChecked(false);
+                    adapter.setFriendsOnly(false);
+                    adapter.getFilter().filter(((EditText)this.getView().findViewById(R.id.editText_user_filter)).getText());
+                }
+                else {
+                    Log.d(Main.TAG," Friends olny is unchecked ");
+                    item.setChecked(true);
+                    adapter.setFriendsOnly(true);
+                    adapter.getFilter().filter(((EditText) this.getView().findViewById(R.id.editText_user_filter)).getText());
+                }
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
 	public void updateUsers(List<User> userlist) {
 		Log.d(Main.TAG,"updateUser in UserList Fragment");
 		for (int i=0;i<userlist.size();i++) {
