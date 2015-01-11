@@ -3,6 +3,32 @@
     android:layout_height="fill_parent"
     android:background="@drawable/backgound"
      >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"></LinearLayout>
+
+        <Button
+            android:id="@+id/highscoreButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_shape"
+            android:text="Highscore"
+            android:onClick="onButtonClick"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="bottom" />
+
+
+
+    </LinearLayout>
    <HorizontalScrollView 
 		android:id="@+id/horizontalScrollView1" 
 	   android:layout_width="fill_parent" 
@@ -16,81 +42,92 @@
 	   	android:layout_width="fill_parent" 
 	   	android:layout_height="wrap_content"
        >
-   		<TableRow 
-			android:id="@+id/tablerow_headline" 
-	   		android:layout_width="fill_parent" 
+   		<TableRow
+			android:id="@+id/tablerow_headline"
+	   		android:layout_width="fill_parent"
 	   		android:layout_height="wrap_content"
 	   		android:background="@color/linehead"
    		   >
-   		   <TextView 
-			android:id="@+id/TextView_headline_rank" 
- 		    android:layout_width="wrap_content" 
+   		   <TextView
+			android:id="@+id/TextView_headline_rank"
+ 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:text="@string/rank"
 		    android:textColor="#ffffff"
 		    android:textSize="24sp"
 		    android:layout_marginRight="5dp"
-   		   /> 
-   		   <TextView 
-			android:id="@+id/TextView_headline_score" 
- 		    android:layout_width="wrap_content" 
+   		   />
+   		   <TextView
+			android:id="@+id/TextView_headline_score"
+ 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:text="@string/score"
 		    android:textColor="#ffffff"
 		    android:textSize="24sp"
 		    android:layout_marginRight="5dp"
-   		   /> 
-		   <TextView 
-			android:id="@+id/TextView_headline_name" 
- 		    android:layout_width="wrap_content" 
+   		   />
+		   <TextView
+			android:id="@+id/TextView_headline_name"
+ 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:text="@string/name"
 		    android:textColor="#ffffff"
 		    android:textSize="24sp"
 		    android:layout_marginRight="5dp"
-   		   /> 
-		   <TextView 
-			android:id="@+id/TextView_headline_games" 
- 		    android:layout_width="wrap_content" 
+   		   />
+		   <TextView
+			android:id="@+id/TextView_headline_games"
+ 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:text="@string/games"
 		    android:textColor="#ffffff"
 		    android:textSize="24sp"
 		    android:layout_marginRight="5dp"
-   		   /> 
-		   <TextView 
-			android:id="@+id/TextView_headline_gameswon" 
- 		    android:layout_width="wrap_content" 
+   		   />
+		   <TextView
+			android:id="@+id/TextView_headline_gameswon"
+ 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:text="@string/won"
 		    android:textColor="#ffffff"
 		    android:textSize="24sp"
 		    android:layout_marginRight="5dp"
-   		   /> 
-		   <TextView 
-			android:id="@+id/TextView_headline_gameslost" 
- 		    android:layout_width="wrap_content" 
+   		   />
+		   <TextView
+			android:id="@+id/TextView_headline_gameslost"
+ 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:text="@string/lost"
 		    android:textColor="#ffffff"
 		    android:textSize="24sp"
 		    android:layout_marginRight="5dp"
-   		   /> 
-		   <TextView 
-			android:id="@+id/TextView_headline_gameslocation" 
- 		    android:layout_width="wrap_content" 
+   		   />
+		   <TextView
+			android:id="@+id/TextView_headline_gameslocation"
+ 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:text="@string/location"
 		    android:textColor="#ffffff"
 		    android:textSize="24sp"
 		    android:layout_marginRight="5dp"
-   		   /> 
-		   		   		   	 	   		   		  	
-   		    
-   		</TableRow>    
-       
+   		   />
+
+
+   		</TableRow>
+
    </TableLayout>
 	</HorizontalScrollView>
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/signinbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+
+        >
+
+    </com.google.android.gms.common.SignInButton>
 
 
 </RelativeLayout>

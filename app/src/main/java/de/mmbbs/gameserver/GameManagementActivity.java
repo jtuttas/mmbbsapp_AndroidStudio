@@ -1,5 +1,19 @@
 package de.mmbbs.gameserver;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.os.Handler;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Toast;
+
+import com.google.android.gms.games.Games;
+
 import org.json.JSONObject;
 
 import de.mmbbs.R;
@@ -9,20 +23,9 @@ import de.mmbbs.gameserver.ui.CustomDialogListener;
 import de.mmbbs.gameserver.ui.CustomDialogType;
 import de.mmbbs.gameserver.ui.FontOverride;
 import de.mmbbs.gameserver.ui.Main;
-import de.mmbbs.tictactoetournament.game.Game;
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.Handler;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.view.WindowManager;
-import android.widget.Toast;
 
-public abstract class GameManagementActivity extends Activity implements
-		GameServerListener {
+public abstract class GameManagementActivity extends BaseGameActivity implements
+		GameServerListener,View.OnClickListener {
 
 	protected Handler handler;
 	protected static GameServerApplication gc;
@@ -294,6 +297,42 @@ public abstract class GameManagementActivity extends Activity implements
 		this.finish();
 	}
 
-	public abstract void onLogin();
+    public void onSignInSucceeded() {
+        //findViewById(R.id.signinbutton).setVisibility(View.GONE);
+        //findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onSignInFailed() {
+        //findViewById(R.id.signinbutton).setVisibility(View.VISIBLE);
+        //findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+    }
+
+    public void onButtonClick(View v) {
+        Log.d(Main.TAG,"onButtonClick()");
+        if (v.getId() == R.id.signinbutton) {
+            beginUserInitiatedSignIn();
+        }
+        else if (v.getId() == R.id.highscoreButton) {
+            startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
+                            getApiClient(), getString(R.string.number_guesses_leaderboard)),
+                    2);
+        }
+        // TODO auch noch einen AbmeldeButton implementieren
+        /*
+        else if (view.getId() == R.id.sign_out_button) {
+            signOut();
+            findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+            findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+        }
+        */
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    public abstract void onLogin();
 
 }

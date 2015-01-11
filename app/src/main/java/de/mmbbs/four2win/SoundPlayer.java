@@ -29,12 +29,24 @@ public class SoundPlayer {
     public void play(Sounds s) {
         switch (s) {
             case GAMEOVER:
+                    if (playerGameOver.isPlaying()) {
+                        playerGameOver.pause();
+                        playerGameOver.seekTo(0);
+                    }
                     playerGameOver.start();
                 break;
             case REQUEST:
+                if (playerRequest.isPlaying()) {
+                    playerRequest.pause();
+                    playerRequest.seekTo(0);
+                }
                     playerRequest.start();
                 break;
             case BOUNCE:
+                if (playerBounce.isPlaying()) {
+                    playerBounce.pause();
+                    playerBounce.seekTo(0);
+                }
                     playerBounce.start();
         }
     }

@@ -29,6 +29,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.gms.games.Games;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -94,13 +96,13 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		Log.d(Main.TAG," **** Game onCreate()");
 		//setContentView(R.layout.main);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.game_four2win);
         handler = new Handler();
         if (savedInstanceState == null) {
@@ -232,6 +234,10 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
         if (currentPlayer==me) {
             gc.stats(1, 1, 0);
             gc.addScore(currentPlayer.getScore());
+            Games.Leaderboards.submitScore(getApiClient(),
+                    getString(R.string.number_guesses_leaderboard),
+                    currentPlayer.getScore());
+
             this.showDialog(currentPlayer.getName() + " " + this.getResources().getString(R.string.has_won) + " Your score is " + currentPlayer.getScore());
         }
         else {
@@ -286,6 +292,9 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
             this.showDialog(getResources().getString(de.mmbbs.R.string.player_timedout)+" Your Score is "+l.player1.getScore());
             gc.stats(1, 1, 0);
             gc.addScore(l.player1.getScore());
+            Games.Leaderboards.submitScore(getApiClient(),
+                    getString(R.string.number_guesses_leaderboard),
+                    l.player1.getScore());
             l.setState(Leinwand.OVER);
         }
         else if (obj.optString("command").compareTo("close")==0) {
@@ -293,6 +302,9 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
             this.showDialog(getResources().getString(de.mmbbs.R.string.player_closed));
             gc.stats(1, 1, 0);
             gc.addScore(l.player1.getScore());
+            Games.Leaderboards.submitScore(getApiClient(),
+                    getString(R.string.number_guesses_leaderboard),
+                    l.player1.getScore());
             l.setState(Leinwand.OVER);
         }
     }

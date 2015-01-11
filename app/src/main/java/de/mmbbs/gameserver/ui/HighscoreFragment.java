@@ -47,6 +47,8 @@ public class HighscoreFragment extends Fragment implements GameHighscoreListener
 		pd.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
 		pd.show();
 		gc.highscores(20);
+
+
 	}
 
 	@Override
@@ -108,6 +110,8 @@ public class HighscoreFragment extends Fragment implements GameHighscoreListener
 		}
 		
 	}
+
+
 
 	private void addRow(TableRow tableRow,String rank,String score, String name,String games,String won,String lost, String location) {
         // Rank

@@ -12,8 +12,9 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
-import android.widget.EditText;
+
 
 public class FragmentActivity extends GameManagementActivity {
 	// Declaring our tabs and the corresponding fragments.
@@ -33,7 +34,7 @@ public class FragmentActivity extends GameManagementActivity {
 			
 			super.onCreate(savedInstanceState);
 			Log.d(Main.TAG,"FragmentActivity onCreate()");
-			requestWindowFeature(Window.FEATURE_ACTION_BAR);
+			//requestWindowFeature(Window.FEATURE_ACTION_BAR);
 			setContentView(R.layout.activity_main);
 			
 			ActionBar actionBar = this.getActionBar();
@@ -141,10 +142,7 @@ public class FragmentActivity extends GameManagementActivity {
 
 			
 		}
-		
 
 
-		
 
-		
 }

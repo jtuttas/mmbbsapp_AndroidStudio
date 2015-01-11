@@ -31,6 +31,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+
 
 @SuppressLint("NewApi")
 public class Main extends Activity implements GameServerListener,GameUserListener, LoginDialogListener{
@@ -351,6 +353,8 @@ public class Main extends Activity implements GameServerListener,GameUserListene
 			return true;
 		}
 	}
+
+
 
 	@Override
 	public void onClick(View v,LoginDialogType type,LinearLayout l) {
