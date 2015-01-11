@@ -235,7 +235,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
             gc.stats(1, 1, 0);
             gc.addScore(currentPlayer.getScore());
             Games.Leaderboards.submitScore(getApiClient(),
-                    getString(R.string.number_guesses_leaderboard),
+                    getString(R.string.leaderboard_42win),
                     currentPlayer.getScore());
 
             this.showDialog(currentPlayer.getName() + " " + this.getResources().getString(R.string.has_won) + " Your score is " + currentPlayer.getScore());
@@ -289,11 +289,11 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
         }
         else if (obj.optString("command").compareTo("timeout")==0) {
             GameManagementActivity.soundPlayer.play(SoundPlayer.Sounds.GAMEOVER);
-            this.showDialog(getResources().getString(de.mmbbs.R.string.player_timedout)+" Your Score is "+l.player1.getScore());
+            this.showDialog(getResources().getString(de.mmbbs.R.string.player_timedout) + " Your Score is " + l.player1.getScore());
             gc.stats(1, 1, 0);
             gc.addScore(l.player1.getScore());
             Games.Leaderboards.submitScore(getApiClient(),
-                    getString(R.string.number_guesses_leaderboard),
+                    getString(R.string.leaderboard_42win),
                     l.player1.getScore());
             l.setState(Leinwand.OVER);
         }
@@ -303,7 +303,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
             gc.stats(1, 1, 0);
             gc.addScore(l.player1.getScore());
             Games.Leaderboards.submitScore(getApiClient(),
-                    getString(R.string.number_guesses_leaderboard),
+                    getString(R.string.leaderboard_42win),
                     l.player1.getScore());
             l.setState(Leinwand.OVER);
         }
@@ -348,4 +348,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
         //gc.addScore(l.player1.getScore());
 
     }
+
+
+
 }

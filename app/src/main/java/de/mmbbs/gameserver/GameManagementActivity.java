@@ -308,25 +308,7 @@ public abstract class GameManagementActivity extends BaseGameActivity implements
         //findViewById(R.id.sign_out_button).setVisibility(View.GONE);
     }
 
-    public void onButtonClick(View v) {
-        Log.d(Main.TAG,"onButtonClick()");
-        if (v.getId() == R.id.signinbutton) {
-            beginUserInitiatedSignIn();
-        }
-        else if (v.getId() == R.id.highscoreButton) {
-            startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
-                            getApiClient(), getString(R.string.number_guesses_leaderboard)),
-                    2);
-        }
-        // TODO auch noch einen AbmeldeButton implementieren
-        /*
-        else if (view.getId() == R.id.sign_out_button) {
-            signOut();
-            findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-            findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-        }
-        */
-    }
+
 
     @Override
     public void onClick(View view) {
@@ -335,4 +317,5 @@ public abstract class GameManagementActivity extends BaseGameActivity implements
 
     public abstract void onLogin();
 
+    public abstract void onButtonClick(View v);
 }

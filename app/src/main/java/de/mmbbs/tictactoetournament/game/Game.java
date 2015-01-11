@@ -3,8 +3,10 @@ package de.mmbbs.tictactoetournament.game;
 import org.json.JSONObject;
 
 import com.google.android.gms.ads.*;
+import com.google.android.gms.games.Games;
 
 
+import de.mmbbs.R;
 import de.mmbbs.gameserver.GameManagementActivity;
 import de.mmbbs.gameserver.GameStates;
 import de.mmbbs.gameserver.PlayGameListener;
@@ -20,6 +22,7 @@ import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -38,10 +41,10 @@ public class Game extends GameManagementActivity implements PlayGameListener,Gam
 	 @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		 Log.d(Main.TAG,"GAME on create()");
+         requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(de.mmbbs.R.layout.game);
         ghandler=new Handler();
         if (savedInstanceState == null) {
@@ -206,6 +209,9 @@ public class Game extends GameManagementActivity implements PlayGameListener,Gam
 		this.showDialog(getResources().getString(de.mmbbs.R.string.player_disconnected));
 		gc.stats(1, 1, 0);
 		gc.addScore(l.getScore());
+        Games.Leaderboards.submitScore(getApiClient(),
+                getString(R.string.leaderboard_ttt),
+                l.getScore());
 
 	}
 
@@ -219,14 +225,22 @@ public class Game extends GameManagementActivity implements PlayGameListener,Gam
 			this.showDialog(getResources().getString(de.mmbbs.R.string.player_timedout));			
 			gc.stats(1, 1, 0);
 			gc.addScore(l.getScore());
-			l.setPlayerState(PlayerState.WON,PlayerState.LOST);
+            Games.Leaderboards.submitScore(getApiClient(),
+                    getString(R.string.leaderboard_ttt),
+                    l.getScore());
+
+            l.setPlayerState(PlayerState.WON,PlayerState.LOST);
 		}
 		else if (obj.optString("command").compareTo("close")==0) {
 			this.showDialog(getResources().getString(de.mmbbs.R.string.player_closed));
 			gc.stats(1, 1, 0);
 			l.setPlayerState(PlayerState.WON,PlayerState.LOST);
 			gc.addScore(l.getScore());
-		}
+            Games.Leaderboards.submitScore(getApiClient(),
+                    getString(R.string.leaderboard_ttt),
+                    l.getScore());
+
+        }
 		else if (obj.optString("command").compareTo("play")==0 ||
 				obj.optString("command").compareTo("won")==0 ||
 				obj.optString("command").compareTo("penalty")==0
@@ -281,7 +295,10 @@ public class Game extends GameManagementActivity implements PlayGameListener,Gam
 		return ghandler;
 				
 	}
-	@Override
+
+
+
+    @Override
 	public void onLogin() {
 		
 	}

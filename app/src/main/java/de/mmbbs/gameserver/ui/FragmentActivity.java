@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 
+import com.google.android.gms.games.Games;
+
 
 public class FragmentActivity extends GameManagementActivity {
 	// Declaring our tabs and the corresponding fragments.
@@ -143,6 +145,20 @@ public class FragmentActivity extends GameManagementActivity {
 			
 		}
 
+    public void onButtonClick(View v) {
+        if (v.getId() == R.id.highscoreButton) {
+            Log.d(Main.TAG,"Click HighscoreButton");
+            if (Main.GAME.compareTo("tttmmbbs")==0) {
+                startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
+                                getApiClient(), getString(R.string.leaderboard_ttt)),
+                        2);
+            }
+            else if (Main.GAME.compareTo("four2win")==0) {
+                startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
+                                getApiClient(), getString(R.string.leaderboard_42win)),
+                        2);
 
-
+            }
+        }
+    }
 }
