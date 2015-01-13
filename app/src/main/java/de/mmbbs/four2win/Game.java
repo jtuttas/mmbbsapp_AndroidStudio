@@ -81,6 +81,11 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
     }
 
     @Override
+    public void onButtonClick(View v) {
+
+    }
+
+    @Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.help:
@@ -236,7 +241,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
             gc.addScore(currentPlayer.getScore());
             Games.Leaderboards.submitScore(getApiClient(),
                     getString(R.string.leaderboard_42win),
-                    currentPlayer.getScore());
+                    gc.getScore());
 
             this.showDialog(currentPlayer.getName() + " " + this.getResources().getString(R.string.has_won) + " Your score is " + currentPlayer.getScore());
         }
@@ -294,7 +299,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
             gc.addScore(l.player1.getScore());
             Games.Leaderboards.submitScore(getApiClient(),
                     getString(R.string.leaderboard_42win),
-                    l.player1.getScore());
+                    gc.getScore());
             l.setState(Leinwand.OVER);
         }
         else if (obj.optString("command").compareTo("close")==0) {
@@ -304,7 +309,7 @@ public class Game extends GameManagementActivity implements GameListener, PlayGa
             gc.addScore(l.player1.getScore());
             Games.Leaderboards.submitScore(getApiClient(),
                     getString(R.string.leaderboard_42win),
-                    l.player1.getScore());
+                    gc.getScore());
             l.setState(Leinwand.OVER);
         }
     }

@@ -141,7 +141,7 @@ public class TabActivity extends android.app.TabActivity implements Loadfinished
         // Tab for Spiele
         TabSpec mspiele = tabHost.newTabSpec("Spiele");
         // setting Title and Icon for the Tab
-        mspiele.setIndicator("SPIELE",getResources().getDrawable(R.drawable.games_icon));
+        mspiele.setIndicator(null,getResources().getDrawable(R.drawable.games_icon));
 
 
         Intent spieleIntent = new Intent(this, Spiele.class);

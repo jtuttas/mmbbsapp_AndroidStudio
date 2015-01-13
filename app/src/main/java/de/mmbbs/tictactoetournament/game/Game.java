@@ -30,7 +30,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 //kommentar 2
 public class Game extends GameManagementActivity implements PlayGameListener,GameListener {
-	private InterstitialAd interstitial;
+    @Override
+    public void onButtonClick(View v) {
+
+    }
+
+    private InterstitialAd interstitial;
 	Leinwand l;
 	private CustomDialogClass cd;
 	private static Handler ghandler; 
@@ -211,7 +216,7 @@ public class Game extends GameManagementActivity implements PlayGameListener,Gam
 		gc.addScore(l.getScore());
         Games.Leaderboards.submitScore(getApiClient(),
                 getString(R.string.leaderboard_ttt),
-                l.getScore());
+                gc.getScore());
 
 	}
 
@@ -227,7 +232,7 @@ public class Game extends GameManagementActivity implements PlayGameListener,Gam
 			gc.addScore(l.getScore());
             Games.Leaderboards.submitScore(getApiClient(),
                     getString(R.string.leaderboard_ttt),
-                    l.getScore());
+                    gc.getScore());
 
             l.setPlayerState(PlayerState.WON,PlayerState.LOST);
 		}
@@ -238,7 +243,7 @@ public class Game extends GameManagementActivity implements PlayGameListener,Gam
 			gc.addScore(l.getScore());
             Games.Leaderboards.submitScore(getApiClient(),
                     getString(R.string.leaderboard_ttt),
-                    l.getScore());
+                    gc.getScore());
 
         }
 		else if (obj.optString("command").compareTo("play")==0 ||

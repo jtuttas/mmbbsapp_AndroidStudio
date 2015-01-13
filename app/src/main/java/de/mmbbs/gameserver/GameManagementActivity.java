@@ -122,11 +122,13 @@ public abstract class GameManagementActivity extends BaseGameActivity implements
 		if (obj.optBoolean("success")) {
 			String user = obj.optString("user");
 			String pw = obj.optString("password");
+            int score = obj.optInt("score");
 			SharedPreferences pref = PreferenceManager
 					.getDefaultSharedPreferences(this);
 			Editor e = pref.edit();
 			e.putString("user", user);
 			e.putString("password", pw);
+            e.putInt("score",score);
 			e.commit();
 			onLogin();
 

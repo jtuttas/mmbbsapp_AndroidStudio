@@ -7,23 +7,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"></LinearLayout>
 
         <Button
             android:id="@+id/highscoreButton"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_shape"
-            android:text="Highscore"
+            android:text="Highscores@Google"
             android:onClick="onButtonClick"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="2dp"
             android:layout_gravity="bottom" />
 
 
@@ -118,16 +114,7 @@
    </TableLayout>
 	</HorizontalScrollView>
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/signinbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
 
-        >
-
-    </com.google.android.gms.common.SignInButton>
 
 
 </RelativeLayout>

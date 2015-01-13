@@ -38,6 +38,7 @@ public class GameServerApplication extends Application implements IOCallback {
 	private SocketIO socket;
 	private String user;
 	public static String game;
+    private int score;
 	private GameStates state = GameStates.DISCONNECTED;
 	private GameServerApplication instance;
 	private ArrayList<User> userlist = new ArrayList<User>();
@@ -223,6 +224,8 @@ public class GameServerApplication extends Application implements IOCallback {
 			try {
 				final JSONObject obj = new JSONObject(json);
 				if (obj.getBoolean("success")) {
+                    score = obj.getInt("score");
+                    Log.d(Main.TAG," Die Score ist "+score);
 					JSONObject data = new JSONObject();
 					try {
 						data.put("game", game);
@@ -680,6 +683,8 @@ public class GameServerApplication extends Application implements IOCallback {
 	}
 
 	public void addScore(int score) {
+        this.score+=score;
+        Log.d(Main.TAG,"addScore() Die Score ist nun "+this.score);
 		if (socket != null && socket.isConnected()) {
 			JSONObject data = new JSONObject();
 			try {
@@ -778,5 +783,11 @@ public class GameServerApplication extends Application implements IOCallback {
 	public void setActivityVisible(boolean b) {
 		activityVisible = b;
 	}
+
+
+
+    public int getScore() {
+        return score;
+    }
 
 }
