@@ -119,7 +119,33 @@ public class GCMHelper {
         }.execute(null, null, null);
     }
 
+    public void sendMessage(String senderUrl,String msg,String to_player) {
+        // Your implementation here.
+        Log.d(TAG, "Sende Nachricht für ("+to_player+")");
+        try {
+            // Create a URL for the desired page
+            String query = URLEncoder.encode(msg, "utf-8");
+            String user = URLEncoder.encode(to_player, "utf-8");
+            URL url = new URL(senderUrl+"?user="+user+"&msg="+query);
+            Log.d(TAG, " url="+url.toString());
 
+
+            // Read all the text returned by the server
+            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+            String str;
+            String s="";
+            while ((str = in.readLine()) != null) {
+                // str is one line of text; readLine() strips the newline character(s)
+                s=s+str+"\r\n";
+            }
+            in.close();
+            Log.d(TAG,"Empfangen:"+s);
+        } catch (MalformedURLException e) {
+            Log.d(TAG, "Malformed URL Exception bei Lade DBInfo");
+        } catch (IOException e) {
+            Log.d(TAG, "IO-Exception send Registration ID");
+        }
+    }
     private void sendRegistrationIdToBackend() {
         // Your implementation here.
         Log.d(TAG, "Trage Registration ID ein für ("+key+")");

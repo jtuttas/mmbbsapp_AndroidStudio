@@ -56,7 +56,8 @@ public class GameServerApplication extends Application implements IOCallback {
 	private boolean pendingRequest = false;
     private DBManager dbm;
 
-	/**
+
+    /**
 	 * Enum used to identify the tracker that needs to be used for tracking.
 	 * 
 	 * A single tracker is usually enough for most purposes. In case you do need
@@ -724,7 +725,20 @@ public class GameServerApplication extends Application implements IOCallback {
 		}
 	}
 
-	public void request(String to_player, String command, String game) {
+    public void gcmRequest(String to_player, String command, String game) {
+        JSONObject data = new JSONObject();
+        try {
+            data.put("game", game);
+            data.put("from_player", user);
+            data.put("to_player", to_player);
+            data.put("command", command);
+            FragmentActivity.gcmHelper.sendMessage("http://service.joerg-tuttas.de/GameServer/gcm-send.php",data.toString(),to_player);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void request(String to_player, String command, String game) {
 		Log.d(Main.TAG, "GameServer request to_player=" + to_player
 				+ " command=" + command);
 		if (command.compareTo("request_acknowledged") == 0) {

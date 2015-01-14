@@ -32,7 +32,7 @@ public class FragmentActivity extends GameManagementActivity {
 		private FragmentActivity instance;
 		//private Handler handler;
 		private DBManager dbm;
-        private GCMHelper gcmHelper;
+        public static GCMHelper gcmHelper;
 
 
 		@Override

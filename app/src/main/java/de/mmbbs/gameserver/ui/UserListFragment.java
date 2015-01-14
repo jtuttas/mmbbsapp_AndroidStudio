@@ -138,7 +138,12 @@ public class UserListFragment extends Fragment implements OnItemClickListener, T
 
 				@Override
 				public void onNegativeButton() {
-			    	gc.request(u.getName(), "cancelrequest",Main.GAME);
+                    if (u.getState()==UserState.OFFLINE) {
+                        gc.gcmRequest(u.getName(), "cancelrequest",Main.GAME);
+                    }
+			    	else {
+                        gc.request(u.getName(), "cancelrequest",Main.GAME);
+                    }
 					gc.setPendingrequest(null, null,0);
 
 				}
@@ -153,7 +158,10 @@ public class UserListFragment extends Fragment implements OnItemClickListener, T
 			customDialog.update();
 			customDialog.show();
 			gc.setPendingrequest(gc.getUser(), u.getName(),GameServerApplication.REQUEST);
-	    	gc.request(u.getName(), "request",Main.GAME);
+            if (u.getState()==UserState.OFFLINE) {
+                gc.gcmRequest(u.getName(), "request",Main.GAME);
+            }
+	    	else gc.request(u.getName(), "request",Main.GAME);
 		}
 		else {
 			Toast.makeText(getActivity(),getResources().getString(R.string.not_a_free_player), Toast.LENGTH_LONG).show();				
