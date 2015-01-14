@@ -61,7 +61,7 @@ public class Main extends Activity implements GameServerListener,GameUserListene
 		FontOverride.setDefaultFont(this, "DEFAULT", "fonts/Isserley-Bold.otf");
 		FontOverride.setDefaultFont(this, "MONOSPACE", "fonts/Isserley-Bold.otf");
 		FontOverride.setDefaultFont(this, "SANS_SERIF", "fonts/Isserley-Bold.otf");
-		dbm = new DBManager(this, "friends.db", null, 1);
+		dbm = new DBManager(this, "friends.db", null);
         Bundle extras = getIntent().getExtras();
         ImageView iv = (ImageView) this.findViewById(R.id.imageViewSplashScreen);
         if (extras!=null) {

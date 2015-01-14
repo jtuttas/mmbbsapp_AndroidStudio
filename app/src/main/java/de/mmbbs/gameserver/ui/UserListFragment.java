@@ -56,7 +56,7 @@ public class UserListFragment extends Fragment implements OnItemClickListener, T
 		lv.setTextFilterEnabled(true);
 
 		this.registerForContextMenu(lv);
-		dbm = new DBManager(getActivity(), "friends.db", null, 1);
+		dbm = new DBManager(getActivity(), "friends.db", null);
 		Log.d(Main.TAG," onCreate() userlist size="+gc.getUserList().size());
 		TextView tv = (TextView) rootView.findViewById(R.id.textView_number_of_users);
 		tv.setText(Integer.toString(gc.getUserList().size()));
@@ -220,6 +220,9 @@ public class UserListFragment extends Fragment implements OnItemClickListener, T
     @Override
 	public void updateUsers(List<User> userlist) {
 		Log.d(Main.TAG,"updateUser in UserList Fragment");
+
+
+
 		for (int i=0;i<userlist.size();i++) {
 			User user = userlist.get(i);
 			if (dbm.isFriend(user.getName())) {

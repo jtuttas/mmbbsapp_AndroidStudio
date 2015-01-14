@@ -82,8 +82,11 @@ public class UserListArrayAdapter extends ArrayAdapter<User>  implements Filtera
 			case IN_GAME:
 				holder.playerimage.setBackgroundResource(R.drawable.playerplay);
 				holder.userlayout.setBackground(context.getResources().getDrawable(R.drawable.player_play));
-
 				break;
+            case OFFLINE:
+                holder.playerimage.setBackgroundResource(R.drawable.playerdisabled);
+                holder.userlayout.setBackground(context.getResources().getDrawable(R.drawable.player_offline));
+                break;
 		}
 		if (user.isFriend()) {
 			holder.playerfriend.setBackgroundResource(R.drawable.heard_minus);

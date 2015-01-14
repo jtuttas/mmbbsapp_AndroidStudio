@@ -13,6 +13,7 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
 import de.mmbbs.R;
+import de.mmbbs.gameserver.ui.DBManager;
 import de.mmbbs.io.socket.IOAcknowledge;
 import de.mmbbs.io.socket.IOCallback;
 import de.mmbbs.io.socket.SocketIO;
@@ -54,6 +55,7 @@ public class GameServerApplication extends Application implements IOCallback {
 	private JSONObject missedUserUpdate;
 	private String from_player, to_player;
 	private boolean pendingRequest = false;
+    private DBManager dbm;
 
 	/**
 	 * Enum used to identify the tracker that needs to be used for tracking.
@@ -75,12 +77,13 @@ public class GameServerApplication extends Application implements IOCallback {
 	public GameServerApplication() {
 		super();
 		instance = this;
+        dbm = new DBManager(this,"friends.db", null);
 	}
 
 	@Override
 	public void onCreate() {
-
 		super.onCreate();
+        userlist = dbm.getUserList();
 	}
 
 	@Override
@@ -468,28 +471,30 @@ public class GameServerApplication extends Application implements IOCallback {
 				String json = args[0].toString();
 				final JSONObject obj = new JSONObject(json);
                 if (obj.optString("game").compareTo(Main.GAME)==0) {
-                    userlist.clear();
+
+                    setUsers(UserState.OFFLINE);
                     Iterator<?> keys = obj.keys();
                     while (keys.hasNext()) {
                         String key = (String) keys.next();
                         try {
                             if (obj.get(key) instanceof JSONObject) {
                                 JSONObject o = (JSONObject) obj.get(key);
-                                User u = new User(o.optString("name"));
-                                Log.d(Main.TAG,
-                                        "GameServer updateusers name="
-                                                + u.getName());
-                                if (o.optString("ingame").compareTo("freeplayer") == 0) {
-                                    u.setState(UserState.FREE);
-                                } else if (o.optString("ingame").compareTo(
-                                        "playerpending") == 0) {
-                                    u.setState(UserState.PENDING);
-                                } else if (o.optString("ingame").compareTo(
-                                        "playerplay") == 0) {
-                                    u.setState(UserState.IN_GAME);
+                                User u = findUserByName(o.optString("name"));
+                                if (u!=null) {
+                                    Log.d(Main.TAG,
+                                            "GameServer updateusers name="
+                                                    + u.getName());
+                                    if (o.optString("ingame").compareTo("freeplayer") == 0) {
+                                        u.setState(UserState.FREE);
+                                    } else if (o.optString("ingame").compareTo(
+                                            "playerpending") == 0) {
+                                        u.setState(UserState.PENDING);
+                                    } else if (o.optString("ingame").compareTo(
+                                            "playerplay") == 0) {
+                                        u.setState(UserState.IN_GAME);
+                                    }
                                 }
-                                if (user.compareTo(u.getName()) != 0)
-                                    this.add(u);
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -510,7 +515,7 @@ public class GameServerApplication extends Application implements IOCallback {
                     }
                 }
                 else {
-                    Log.d(Main.TAG," kein Handlungsbedarf, war nicht das angezeigte Spiel");
+                    Log.d(Main.TAG, " kein Handlungsbedarf, war nicht das angezeigte Spiel");
                 }
 			} catch (JSONException e1) {
 				e1.printStackTrace();
@@ -519,7 +524,27 @@ public class GameServerApplication extends Application implements IOCallback {
 		}
 	}
 
-	@Override
+    private User findUserByName(String name) {
+        for (User u : userlist) {
+            if (u.getName().compareTo(name)==0) return u;
+        }
+        // nicht der eigene Name?
+        if (user.compareTo(name) != 0) {
+            User u = new User(name);
+            userlist.add(u);
+            dbm.addUser(u);
+            return u;
+        }
+        return null;
+    }
+
+    private void setUsers(UserState offline) {
+        for (User u : userlist) {
+            u.setState(offline);
+        }
+    }
+
+    @Override
 	public void onError(SocketIOException socketIOException) {
 		Log.d(Main.TAG, "onError()");
 		if (handler != null)

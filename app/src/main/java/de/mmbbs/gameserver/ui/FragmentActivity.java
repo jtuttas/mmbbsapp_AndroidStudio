@@ -57,7 +57,7 @@ public class FragmentActivity extends GameManagementActivity {
 			gc=(GameServerApplication) this.getApplication();
 			handler = new Handler();
 			
-			dbm = new DBManager(this, "friends.db", null, 1);
+			dbm = new DBManager(this, "friends.db", null);
 		}
 
 		@Override

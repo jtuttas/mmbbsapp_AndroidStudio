@@ -8,7 +8,7 @@ public class User {
 	
 	public User(String name) {
 		this.name=name;
-		state=UserState.FREE;
+		state=UserState.OFFLINE;
 	}
 	
 	public boolean isFriend() {
@@ -31,6 +31,5 @@ public class User {
 		
 		state=s;
 	}
-	
-	
+
 }
