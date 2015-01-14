@@ -2,6 +2,7 @@ package de.mmbbs.gameserver.ui;
 
 import de.mmbbs.R;
 import de.mmbbs.gameserver.DBManager;
+import de.mmbbs.gameserver.GCMHelper;
 import de.mmbbs.gameserver.GameManagementActivity;
 import de.mmbbs.gameserver.GameServerApplication;
 
@@ -31,6 +32,9 @@ public class FragmentActivity extends GameManagementActivity {
 		private FragmentActivity instance;
 		//private Handler handler;
 		private DBManager dbm;
+        private GCMHelper gcmHelper;
+
+
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			
@@ -59,6 +63,7 @@ public class FragmentActivity extends GameManagementActivity {
 			handler = new Handler();
 			
 			dbm = new DBManager(this, "friends.db", null);
+            gcmHelper = new GCMHelper(this,"http://service.joerg-tuttas.de/GameServer/gcm-register.php",gc.getUser());
 		}
 
 		@Override

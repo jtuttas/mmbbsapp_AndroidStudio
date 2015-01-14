@@ -1,4 +1,4 @@
-package de.mmbbs;
+package de.mmbbs.gameserver;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
+
+import de.mmbbs.TabActivity;
 
 /**
  * Created by Jörg on 14.01.2015.
@@ -119,10 +122,12 @@ public class GCMHelper {
 
     private void sendRegistrationIdToBackend() {
         // Your implementation here.
-        Log.d(TabActivity.TAG, "Trage Registration ID ein für "+key);
+        Log.d(TAG, "Trage Registration ID ein für ("+key+")");
         try {
             // Create a URL for the desired page
-            URL url = new URL(this.url+"?key="+key+"&GCMid="+regid);
+            String query = URLEncoder.encode(key, "utf-8");
+            URL url = new URL(this.url+"?key="+query+"&GCMid="+regid);
+
 
             // Read all the text returned by the server
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -133,11 +138,11 @@ public class GCMHelper {
                 s=s+str+"\r\n";
             }
             in.close();
-            Log.d(TabActivity.TAG,"Empfangen:"+s);
+            Log.d(TAG,"Empfangen:"+s);
         } catch (MalformedURLException e) {
-            Log.d(TabActivity.TAG, "Malformed URL Exception bei Lade DBInfo");
+            Log.d(TAG, "Malformed URL Exception bei Lade DBInfo");
         } catch (IOException e) {
-            Log.d(TabActivity.TAG, "IO-Exception send Registration ID");
+            Log.d(TAG, "IO-Exception send Registration ID");
         }
     }
 
