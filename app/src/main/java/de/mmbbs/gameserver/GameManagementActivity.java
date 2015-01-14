@@ -300,12 +300,14 @@ public abstract class GameManagementActivity extends BaseGameActivity implements
 	}
 
     public void onSignInSucceeded() {
+        Log.d(Main.TAG,"onSiginSucceeded()");
         //findViewById(R.id.signinbutton).setVisibility(View.GONE);
         //findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onSignInFailed() {
+        Log.d(Main.TAG,"onSiginFailed()");
         //findViewById(R.id.signinbutton).setVisibility(View.VISIBLE);
         //findViewById(R.id.sign_out_button).setVisibility(View.GONE);
     }

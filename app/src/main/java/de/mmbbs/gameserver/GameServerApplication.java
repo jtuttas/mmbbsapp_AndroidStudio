@@ -13,7 +13,6 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
 import de.mmbbs.R;
-import de.mmbbs.gameserver.ui.DBManager;
 import de.mmbbs.io.socket.IOAcknowledge;
 import de.mmbbs.io.socket.IOCallback;
 import de.mmbbs.io.socket.SocketIO;

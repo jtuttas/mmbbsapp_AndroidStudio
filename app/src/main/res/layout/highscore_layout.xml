@@ -9,7 +9,7 @@
 
 
         <Button
-            android:id="@+id/highscoreButton"
+            android:id="@+id/googleHighscoreButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_shape"

@@ -1,6 +1,7 @@
 package de.mmbbs.gameserver.ui;
 
 import de.mmbbs.R;
+import de.mmbbs.gameserver.DBManager;
 import de.mmbbs.gameserver.GameManagementActivity;
 import de.mmbbs.gameserver.GameServerApplication;
 
@@ -13,7 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
+import android.widget.Toast;
 
 import com.google.android.gms.games.Games;
 
@@ -146,18 +147,25 @@ public class FragmentActivity extends GameManagementActivity {
 		}
 
     public void onButtonClick(View v) {
-        if (v.getId() == R.id.highscoreButton) {
-            Log.d(Main.TAG,"Click HighscoreButton");
-            if (Main.GAME.compareTo("tttmmbbs")==0) {
-                startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
-                                getApiClient(), getString(R.string.leaderboard_ttt)),
-                        2);
-            }
-            else if (Main.GAME.compareTo("four2win")==0) {
-                startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
-                                getApiClient(), getString(R.string.leaderboard_42win)),
-                        2);
+        if (v.getId() == R.id.googleHighscoreButton) {
+            try {
+                Log.d(Main.TAG, "Click HighscoreButton");
+                if (Main.GAME.compareTo("tttmmbbs") == 0) {
+                    startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
+                                    getApiClient(), getString(R.string.leaderboard_ttt)),
+                            2);
+                } else if (Main.GAME.compareTo("four2win") == 0) {
+                    startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
+                                    getApiClient(), getString(R.string.leaderboard_42win)),
+                            2);
 
+                }
+            }
+            catch (SecurityException e) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        "Sie sind nicht angemeldet",
+                        Toast.LENGTH_LONG).show();
             }
         }
     }

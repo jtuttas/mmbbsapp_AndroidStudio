@@ -575,10 +575,10 @@ containing a value of this type.
         public static final int four2winTextViewplayerLeft=0x7f0c002a;
         public static final int four2winTextViewplayerRight=0x7f0c002e;
         public static final int gallery1=0x7f0c0056;
+        public static final int googleHighscoreButton=0x7f0c0032;
         public static final int grayscale=0x7f0c0015;
         public static final int gui=0x7f0c0029;
         public static final int help=0x7f0c0072;
-        public static final int highscoreButton=0x7f0c0032;
         public static final int holo_dark=0x7f0c0007;
         public static final int holo_light=0x7f0c0008;
         public static final int horizontalScrollView1=0x7f0c0033;

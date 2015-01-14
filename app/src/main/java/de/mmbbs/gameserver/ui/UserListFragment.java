@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.mmbbs.R;
 import de.mmbbs.four2win.SoundPlayer;
+import de.mmbbs.gameserver.DBManager;
 import de.mmbbs.gameserver.GameManagementActivity;
 import de.mmbbs.gameserver.GameServerApplication;
 import de.mmbbs.gameserver.GameUserListener;
@@ -125,7 +126,7 @@ public class UserListFragment extends Fragment implements OnItemClickListener, T
 		
 	}
 	private void requestPlayer(final User u) {
-		if (u.getState()==UserState.FREE) {
+		if (u.getState()==UserState.FREE || u.getState()==UserState.OFFLINE) {
 			
 			customDialog = ((GameManagementActivity)this.getActivity()).getCustomDialog();
 			customDialog.setType(CustomDialogType.INFO);

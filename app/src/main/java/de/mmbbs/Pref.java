@@ -42,7 +42,10 @@ public class Pref extends PreferenceActivity  {
 		        	Editor e = prefs.edit();
 		        	e.putString("klasse", klasse);
 		        	e.commit();
-		        	if (TabActivity.regid != null) registerInBackground();
+		        	if (TabActivity.gcmHelper.regid != null) {
+                        TabActivity.gcmHelper.setKey(klasse);
+                        TabActivity.gcmHelper.registerInBackground();
+                    }
 		        }
 		    }
 		};
@@ -50,18 +53,18 @@ public class Pref extends PreferenceActivity  {
 		prefs.registerOnSharedPreferenceChangeListener(prefListener);
 	}
 
-	
+	/*
 	private void registerInBackground() {
         new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
                 
                  String klasse = prefs.getString("klasse", "");
-                Log.d(TabActivity.TAG,"registration id="+TabActivity.regid);
+                Log.d(TabActivity.TAG,"registration id="+TabActivity.gcmHelper.regid);
             	Log.d(TabActivity.TAG, "Trage Registration ID ein für ("+klasse+")");
         		try {
         		    // Create a URL for the desired page
-        		    URL url = new URL(TabActivity.DB_URL+"gcm.php?KLASSE="+klasse+"&GCMid="+TabActivity.regid);
+        		    URL url = new URL(TabActivity.DB_URL+"gcm.php?KLASSE="+klasse+"&GCMid="+TabActivity.gcmHelper.regid);
 
         		    // Read all the text returned by the server
         		    BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -88,7 +91,7 @@ public class Pref extends PreferenceActivity  {
             }
         }.execute(null, null, null);
     }
-   
+    */
 
 
 }

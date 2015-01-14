@@ -1,4 +1,4 @@
-package de.mmbbs.gameserver.ui;
+package de.mmbbs.gameserver;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -11,10 +11,11 @@ import android.util.Log;
 import java.util.ArrayList;
 
 import de.mmbbs.gameserver.User;
+import de.mmbbs.gameserver.ui.Main;
 
 public class DBManager extends SQLiteOpenHelper {
 
-    public static final int DBVersion=7;
+    public static final int DBVersion=8;
 
 	private static final String[] SQL = {
 		"CREATE TABLE `friends` (name TEXT PRIMARY KEY)",

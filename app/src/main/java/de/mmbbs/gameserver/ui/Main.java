@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.JSONObject;
 
 import de.mmbbs.R;
+import de.mmbbs.gameserver.DBManager;
 import de.mmbbs.gameserver.GameServerApplication;
 import de.mmbbs.gameserver.GameServerListener;
 import de.mmbbs.gameserver.GameUserListener;
@@ -30,8 +31,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.google.android.gms.common.api.GoogleApiClient;
 
 
 @SuppressLint("NewApi")
