@@ -71,6 +71,19 @@ public class FragmentActivity extends GameManagementActivity {
 			super.onStart();
 			gc.setActivityVisible(true);
 			Log.d(Main.TAG,"onStart() FragmentActivity conected="+gc.isConnected());
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                Log.d(Main.TAG,":-( kein Extra ");
+
+            } else {
+                if (extras.getString("command")!=null && extras.getString("command").compareTo("request")==0) {
+
+                    Main.GAME=extras.getString("game");
+                }
+                else {
+                    Log.d(Main.TAG,"keine richtigen extras ->"+extras.getString("command"));
+                }
+            }
 		}
 		
 		
@@ -134,10 +147,10 @@ public class FragmentActivity extends GameManagementActivity {
 			Bundle extras = getIntent().getExtras();
 			if(extras == null) {
 			        Log.d(Main.TAG,":-( kein Extra ");
-			        
+
 			} else {
 				if (extras.getString("command")!=null && extras.getString("command").compareTo("request")==0) {
-					
+
 					showRequestDialog(extras.getString("from_player"),extras.getString("game"));
 					getIntent().removeExtra("command");
 					getIntent().removeExtra("from_player");
@@ -146,7 +159,7 @@ public class FragmentActivity extends GameManagementActivity {
 					Log.d(Main.TAG,"keine richtigen extras ->"+extras.getString("command"));
 				}
 			}
-					
+
 
 			
 		}
