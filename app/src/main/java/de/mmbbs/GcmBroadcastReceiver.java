@@ -57,11 +57,11 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
               */
              if (GoogleCloudMessaging.
                      MESSAGE_TYPE_SEND_ERROR.equals(messageType)) {
-                 displayNotification(context,"Send error: " + extras.toString(),null);
+                 displayNotification(context,"MMBbS App","Send error: " + extras.toString(),null,TabActivity.class);
              } else if (GoogleCloudMessaging.
                      MESSAGE_TYPE_DELETED.equals(messageType)) {
-                 displayNotification(context,"Deleted messages on server: " +
-                         extras.toString(),null);
+                 displayNotification(context,"MMBbS App","Deleted messages on server: " +
+                         extras.toString(),null,TabActivity.class);
              // If it's a regular GCM message, do some work.
              } else if (GoogleCloudMessaging.
                      MESSAGE_TYPE_MESSAGE.equals(messageType)) {
@@ -77,7 +77,7 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
                          Log.d(Main.TAG," command=request");
                          msgText="Spieler '"+from_player+"' will mit Dir\ndas Spiel '"+game+"' spielen!";
                          sound.play(SoundPlayer.Sounds.REQUEST);
-                         displayNotification(context, msgText,jo);
+                         displayNotification(context, "Games@MMBbS",msgText,jo,FragmentActivity.class);
                      }
                      else if (command.compareTo("cancelrequest")==0) {
                          Log.d(Main.TAG," command=cancelrequest");
@@ -85,11 +85,11 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
                          notificationManager.cancel(2);
 
                      }
-                     else displayNotification(context, msgText,jo);
+                     else displayNotification(context, "Games@MMBbS",msgText,jo,FragmentActivity.class);
                  } catch (JSONException e) {
                      Log.d(Main.TAG," KEIN JSON");
                      e.printStackTrace();
-                     displayNotification(context, msgText,null);
+                     displayNotification(context, "MMBBSApp",msgText,null,TabActivity.class);
                  }
 
 
@@ -98,8 +98,8 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
          }
      }
 
-    private void displayNotification(Context context, String msgText, JSONObject obj) {
-        Intent intent = new Intent(context,FragmentActivity.class);
+    private void displayNotification(Context context, String msgTitel,String msgText, JSONObject obj,Class c) {
+        Intent intent = new Intent(context,c);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP
                 | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         if (obj!=null) {
@@ -110,7 +110,7 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
         PendingIntent pIntent = PendingIntent.getActivity(context,0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification n = new Notification.Builder(context)
-                .setContentTitle("Games@MMBBS")
+                .setContentTitle(msgTitel)
                 //.setVibrate(new long[] { 1000, 1000 })
                 .setContentText(msgText)
                 .setSmallIcon(R.drawable.icon)
@@ -121,32 +121,4 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Application.NOTIFICATION_SERVICE);
         notificationManager.notify(2, n);
     }
-
-    /*
-    public void notification(Context context,String name) {
-    	
-    final int id = 2;
-    String ns = context.NOTIFICATION_SERVICE;
-    NotificationManager notificationManager = (NotificationManager) context.getSystemService(ns);
-    int icon = R.drawable.icon;
-    CharSequence tickerText = name;
-    long when = System.currentTimeMillis();
-
-
-    CharSequence contentText="nothing";
-
-     Notification checkin_notification = new Notification(icon, tickerText,
-             when);
-     Intent notificationIntent = new Intent(context, TabActivity.class);
-        notificationIntent.setFlags(  Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-        PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
-                notificationIntent, 0);
-        checkin_notification.setLatestEventInfo(context, "MMBBSapp",
-                contentText, contentIntent);
-        checkin_notification.flags = Notification.FLAG_ONLY_ALERT_ONCE;
-        notificationManager.notify(id, checkin_notification);
-			
-    }
-    */
 }
