@@ -33,7 +33,7 @@
     <string name="about_add">Liebe Schülerinnen und Schüler, sicherlich fragen Sie sich, warum hier Werbung erscheint? \n\nNun, die Einnahmen aus der Werbung werden im kommenden Jahr der IT-Fete gespendet. Also bitte hin und wieder mal auf die Werbung klicken, dass ist wie eine kleine Spende für die IT-Fete!</string>
     <string name="ads_text">Heute schon auf die Werbung geklickt?</string>
     <string name="new_version_txt">- mit 4Gewinnt Spiel\n- Bugfixes \n\n Beschwerden und Reklamation bitte via EMail an tuttas@mmbbs.de</string>
-    <string name="version">V1.7</string>
+    <string name="version">V1.9</string>
     <string-array name="stundenplanliste">
         
         <item>Tabelle</item>
